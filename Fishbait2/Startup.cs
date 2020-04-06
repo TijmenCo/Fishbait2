@@ -27,7 +27,7 @@ namespace Fishbait2
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
