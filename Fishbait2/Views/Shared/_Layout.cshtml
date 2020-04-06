@@ -13,27 +13,19 @@
     <title>Fishbait!</title>
 </head>
 <body>
-
-    <div class="jumbotron text-center">
-        <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>Column 1</h3>
-                <p>Lorem ipsum dolor..</p>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-light bg-white" style="padding: 0px;">
+            <a class="navbar-brand">
+                <img src="~/Images/FishbaitLogo.png" alt="FISHBAIT" style="width:90px;">
+            </a>
+            <div class="navbar-nav">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search">
+                <a href="home" class="nav-item nav-link active">Home</a>
             </div>
-            <div class="col-sm-4">
-                <h3>Column 2</h3>
-                <p>Lorem ipsum dolor..</p>
+            <div class="navbar-nav ml-auto">
+                <a href="#" class="nav-item nav-link">Login</a>
             </div>
-            <div class="col-sm-4">
-                <h3>Column 3</h3>
-                <p>Lorem ipsum dolor..</p>
-            </div>
-        </div>
+        </nav>
     </div>
     @RenderBody()
 
