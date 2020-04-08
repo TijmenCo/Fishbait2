@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using MySql.Data.MySqlClient;
 
 namespace Fishbait2.Models
 {
@@ -19,9 +20,6 @@ namespace Fishbait2.Models
         
         public string mail { get; set; }
 
-        public List<User> GetUsers()
-        {
-            List<User> users = new List<User>();
-        }
+   
     }
 }
