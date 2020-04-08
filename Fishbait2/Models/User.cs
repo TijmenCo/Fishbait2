@@ -8,18 +8,20 @@ namespace Fishbait2.Models
 {
     public class User
     {
-        public int Id { get; set; }
+  
+        public int id { get; set; }
 
-        [Required(ErrorMessage = "You have to put in an username!")]
-        [Display(Name = "Username:")]
-        public string Username { get; set; }
+        public string username { get; set; }
 
-        [Required(ErrorMessage = "You have to enter a password!")]
-        [Display(Name = "Password:")]
-        public string Password { get; set; }
+       
+        public string password { get; set; }
 
-        [Required(ErrorMessage = "You have to enter an e-mail!")]
-        [Display(Name = "E-Mail:")]
-        public string Mail { get; set; }
+        
+        public string mail { get; set; }
+
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+        }
     }
 }

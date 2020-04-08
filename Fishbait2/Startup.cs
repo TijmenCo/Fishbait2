@@ -18,6 +18,8 @@ namespace Fishbait2
         {
             services.AddMvc();
             services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddDbContext<FishbaitDatabase>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("FishbaitDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
