@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,10 +49,13 @@ namespace Fishbait2.Data
                         post.id = reader.GetInt32(0);
                         post.accountID = reader.GetInt32(1);
                         post.username = reader.GetString(2);
-                        post.title = reader.GetString(2);
-                        post.description = reader.GetString(3);
-                        post.image = reader.GetString(4);
-                        post.tag = reader.GetString(5);
+                        post.title = reader.GetString(3);
+                        post.description = reader.GetString(4);
+                        post.image = reader.GetString(5);
+                        if (!reader.IsDBNull(post.tag))
+                        {
+                            post.tag = reader.GetString(6);
+                        }
 
                         posts.Add(post);
                     }
