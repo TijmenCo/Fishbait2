@@ -38,7 +38,7 @@ namespace Fishbait2.Data
             List<Post> posts = new List<Post>();
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                using (MySqlCommand query = new MySqlCommand("select * from user", conn))
+                using (MySqlCommand query = new MySqlCommand("select * from post", conn))
                 {
                     conn.Open();
                     var reader = query.ExecuteReader();

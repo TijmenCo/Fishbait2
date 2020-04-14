@@ -11,7 +11,10 @@ footer {
     width: 100%;
 }
 .postBox {
-    min-height: 250px;
-    line-height: 250px;
+    height: 250px;
 }
-    
+
+.postBoxText {
+    line-height: 25px;
+    word-wrap: break-word;
+}
