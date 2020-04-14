@@ -9,7 +9,7 @@ namespace Fishbait2.Data
 {
     public class DatabaseManager
     {
-        public string connectionString = "server=localhost;user id=Tijmen;persistsecurityinfo=True;database=fishbait";
+        public string connectionString = "Server=localhost;Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123";
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();
