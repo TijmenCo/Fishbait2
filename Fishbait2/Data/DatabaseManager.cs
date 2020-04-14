@@ -15,7 +15,7 @@ namespace Fishbait2.Data
             List<User> users = new List<User>();
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                using (MySqlCommand query = new MySqlCommand("select * from user",conn))
+                using (MySqlCommand query = new MySqlCommand("select * from user", conn))
                 {
                     conn.Open();
                     var reader = query.ExecuteReader();
@@ -32,6 +32,32 @@ namespace Fishbait2.Data
                 }
             }
             return users;
+        }
+        public List<Post> GetPosts()
+        {
+            List<Post> posts = new List<Post>();
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand query = new MySqlCommand("select * from user", conn))
+                {
+                    conn.Open();
+                    var reader = query.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Post post = new Post();
+                        post.id = reader.GetInt32(0);
+                        post.accountID = reader.GetInt32(1);
+                        post.username = reader.GetString(2);
+                        post.title = reader.GetString(2);
+                        post.description = reader.GetString(3);
+                        post.image = reader.GetString(4);
+                        post.tag = reader.GetString(5);
+
+                        posts.Add(post);
+                    }
+                }
+            }
+            return posts;
         }
     }
 }
