@@ -52,11 +52,10 @@ namespace Fishbait2.Data
                         post.title = reader.GetString(3);
                         post.description = reader.GetString(4);
                         post.image = reader.GetString(5);
-                        if (!reader.IsDBNull(post.tag))
+                        if (!reader.IsDBNull(6))
                         {
                             post.tag = reader.GetString(6);
                         }
-
                         posts.Add(post);
                     }
                 }
