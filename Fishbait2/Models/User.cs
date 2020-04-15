@@ -9,15 +9,15 @@ namespace Fishbait2.Models
 {
     public class User
     {
-  
+        [Required]
         public int id { get; set; }
-
+        [Required]
         public string username { get; set; }
 
-       
+        [Required]
         public string password { get; set; }
 
-        
+        [Required]
         public string mail { get; set; }
 
    

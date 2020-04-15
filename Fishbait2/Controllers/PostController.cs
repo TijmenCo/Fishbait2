@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Fishbait2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fishbait2.Controllers
@@ -13,6 +14,11 @@ namespace Fishbait2.Controllers
             return View();
         }
         public IActionResult CreatePost()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddPost(Post post)
         {
             return View();
         }
