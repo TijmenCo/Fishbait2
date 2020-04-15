@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fishbait2", "Fishbait2\Fishbait2.csproj", "{9261FB84-60D1-4741-8D98-01F8DB094C01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class Library", "Class Library\Class Library.csproj", "{7B7D6A06-5907-4E45-8AB5-1DE1E3878BF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9261FB84-60D1-4741-8D98-01F8DB094C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9261FB84-60D1-4741-8D98-01F8DB094C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9261FB84-60D1-4741-8D98-01F8DB094C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B7D6A06-5907-4E45-8AB5-1DE1E3878BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B7D6A06-5907-4E45-8AB5-1DE1E3878BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B7D6A06-5907-4E45-8AB5-1DE1E3878BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B7D6A06-5907-4E45-8AB5-1DE1E3878BF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

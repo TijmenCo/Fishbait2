@@ -23,7 +23,7 @@ namespace Fishbait2.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("~/Views/Home/Index.cshtml");
+            return View();
         }
         [HttpPost]
         public IActionResult Create([Bind] Post post)
