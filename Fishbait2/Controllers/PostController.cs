@@ -9,6 +9,7 @@ namespace Fishbait2.Controllers
 {
     public class PostController : Controller
     {
+        PostDBAccesLayer postDB = new PostDBAccesLayer();
         public IActionResult Index()
         {
             return View();
@@ -17,10 +18,29 @@ namespace Fishbait2.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult AddPost(Post post)
+
+
+        [HttpGet]
+        public IActionResult Create()
         {
-            return View();
+            return View("~/Views/Home/Index.cshtml");
+        }
+        [HttpPost]
+        public IActionResult Create([Bind] Post post)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string resp = postDB.AddPost(post);
+                    TempData["msg"] = resp;
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return View("~/Views/Home/Index.cshtml");
         }
     }
 }

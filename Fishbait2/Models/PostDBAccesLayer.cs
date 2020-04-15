@@ -9,8 +9,8 @@ namespace Fishbait2.Models
 {
     public class PostDBAccesLayer
     {
-        MySqlConnection con = new MySqlConnection("Serve =localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
-        public string AddEmployeeRecord(Post post)
+        MySqlConnection con = new MySqlConnection("Server =localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
+        public string AddPost(Post post)
         {
             try
             {
