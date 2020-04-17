@@ -25,7 +25,10 @@ namespace Fishbait2.Controllers
         {
             return View();
         }
-
+        public IActionResult GoToPost(int postID)
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Create()
