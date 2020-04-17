@@ -10,7 +10,6 @@ namespace Fishbait2.Models
     public class PostDBAccesLayer
     {
         MySqlConnection con = new MySqlConnection("Server=localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
-        public string query = "INSERT INTO post (title, description, tag) VALUES (@title,@description,@tag);";
         public string AddPost(Post post)
         {
             try
@@ -31,6 +30,35 @@ namespace Fishbait2.Models
                 return (ex.Message.ToString());
             }
         }
+        public List<Post> GetPosts()
+        {
+            List<Post> posts = new List<Post>();
+
+            using (MySqlCommand query = new MySqlCommand("select * from post", con))
+            {
+                con.Open();
+                var reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    Post post = new Post();
+                    post.id = reader.GetInt32(0);
+                    post.title = reader.GetString(1);
+                    post.description = reader.GetString(2);
+                    if (!reader.IsDBNull(3))
+                    {
+                        post.image = reader.GetString(3);
+                    }
+                    if (!reader.IsDBNull(4))
+                    {
+                        post.tag = reader.GetString(4);
+                    }
+                    posts.Add(post);
+                }
+            }
+
+            return posts;
+        }
     }
+    
 }
 

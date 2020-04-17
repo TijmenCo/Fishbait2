@@ -34,34 +34,6 @@ namespace Fishbait2.Data
             }
             return users;
         }
-        public List<Post> GetPosts()
-        {
-            List<Post> posts = new List<Post>();
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                using (MySqlCommand query = new MySqlCommand("select * from post", conn))
-                {
-                    conn.Open();
-                    var reader = query.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Post post = new Post();
-                        post.id = reader.GetInt32(0);
-                        post.title = reader.GetString(1);
-                        post.description = reader.GetString(2);
-                        if (!reader.IsDBNull(3))
-                        {
-                            post.image = reader.GetString(3);
-                        }
-                        if (!reader.IsDBNull(4))
-                        {
-                            post.tag = reader.GetString(4);
-                        }
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
-        }
+        
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Fishbait2.Data;
+using Fishbait2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fishbait2.Controllers
@@ -11,8 +12,8 @@ namespace Fishbait2.Controllers
     {
         public IActionResult Index()
         {
-            DatabaseManager databaseManager = new DatabaseManager();
-            var posts = databaseManager.GetPosts();
+            PostDBAccesLayer postsDB = new PostDBAccesLayer();
+            var posts = postsDB.GetPosts();
             return View(posts);
         }
     }

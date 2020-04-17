@@ -33,7 +33,7 @@ namespace Fishbait2.Controllers
                 if (ModelState.IsValid)
                 {
                     string resp = postDB.AddPost(post);
-                    TempData["msg"] = resp;
+                   
                 }
             }
             catch (Exception ex)
