@@ -1,4 +1,4 @@
-﻿@model Fishbait2.Models.Post
+﻿@model Fishbait2.Models.PostViewModel
 <style>
     body {
         position: relative;
@@ -34,7 +34,8 @@
         </div>
         <div class="form-row col-md-4">
             <label for="inputImage">Image</label>
-            <input type="text" class="form-control" id="">
+            <input asp-for="files" type="file" name="files" multiple />
+            <span asp-validation-for="files" class="text-danger"></span>
         </div>
         <div class="form-row col-md-4">
             <label for="inputTag">Tag</label>
