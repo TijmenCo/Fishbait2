@@ -40,7 +40,7 @@ namespace Fishbait2.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return View("~/Views/Home/Index.cshtml");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

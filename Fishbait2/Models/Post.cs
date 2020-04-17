@@ -8,10 +8,8 @@ namespace Fishbait2.Models
 {
     public class Post
     {
+        [Key]
         public int id { get; set; }
-        public int accountID { get; set; }
-        public string username { get; set; }
-       
         public string title { get; set; }
     
         public string description { get; set; }

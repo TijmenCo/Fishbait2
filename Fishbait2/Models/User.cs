@@ -20,6 +20,8 @@ namespace Fishbait2.Models
         [Required]
         public string mail { get; set; }
 
+        public string preference { get; set; }
+
    
     }
 }

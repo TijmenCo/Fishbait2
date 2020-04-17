@@ -47,14 +47,15 @@ namespace Fishbait2.Data
                     {
                         Post post = new Post();
                         post.id = reader.GetInt32(0);
-                        post.accountID = reader.GetInt32(1);
-                        post.username = reader.GetString(2);
-                        post.title = reader.GetString(3);
-                        post.description = reader.GetString(4);
-                        post.image = reader.GetString(5);
-                        if (!reader.IsDBNull(6))
+                        post.title = reader.GetString(1);
+                        post.description = reader.GetString(2);
+                        if (!reader.IsDBNull(3))
                         {
-                            post.tag = reader.GetString(6);
+                            post.image = reader.GetString(3);
+                        }
+                        if (!reader.IsDBNull(4))
+                        {
+                            post.tag = reader.GetString(4);
                         }
                         posts.Add(post);
                     }
