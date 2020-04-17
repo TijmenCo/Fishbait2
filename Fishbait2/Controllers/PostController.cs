@@ -12,7 +12,11 @@ namespace Fishbait2.Controllers
     public class PostController : Controller
     {
         PostDBAccesLayer postDB = new PostDBAccesLayer();
-        private IWebHostEnvironment environment;
+        private readonly IWebHostEnvironment _environment;
+        public PostController(IWebHostEnvironment environment)
+        {
+            _environment = environment;
+        }
         public IActionResult Index()
         {
             return View();
@@ -36,7 +40,7 @@ namespace Fishbait2.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var uploads = Path.Combine(environment.WebRootPath, "Images");
+                    var uploads = Path.Combine(_environment.WebRootPath, "PostImages");
                     foreach (var file in post.files)
                     {
                         realmodel.image = file.FileName;
@@ -51,7 +55,6 @@ namespace Fishbait2.Controllers
                     realmodel.id = post.id;
                     realmodel.title = post.title;
                     realmodel.description = post.description;
-                    realmodel.image = post.image;
                     realmodel.tag = post.tag;
 
                     string resp = postDB.AddPost(realmodel);
