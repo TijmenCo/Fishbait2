@@ -18,7 +18,12 @@ footer {
     line-height: 25px;
     word-wrap: break-word;
 }
-.postBoxImageView {
-    height: 100px;
-    width: 100px;
+
+.postBoxImage {
+    max-height: 250px;
+    max-width: 250px;
+}
+
+.postBoxImageContainer {
+    text-align: center;
 }

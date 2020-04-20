@@ -4,7 +4,7 @@
 }
 <style>
 
-      body {
+    body {
         position: relative;
         padding-bottom: 150px;
         min-height: 100vh;
@@ -17,18 +17,44 @@
         width: 100%;
     }
 
+    .postBoxImage {
+        max-height: 250px;
+        max-width: 500px;
+        min-height: 150px;
+        min-width: 150px;
+    }
 
+    .postBoxImageContainer {
+        text-align: left;
+    }
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-md-8">
             <h2>@Model.title</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <img src="~/PostImages/@Model.image" alt="image" class="postBoxImageView">
+        <div class="col-md-8 postBoxImageContainer">
+            <img src="~/PostImages/@Model.image" alt="image" class="postBoxImage">
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Follow!</h5>
+                    <p class="card-text">If you like their idea be sure to follow to get a notification when they update.</p>
+                    <a href="#" class="btn btn-primary">I'm interested!</a>
+                </div>
+            </div>
+            <br />
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <button href="" type="button" class="btn btn-danger">Delete Post</button>
+                    <br />
+                    <button href="" type="button" class="btn btn-success">Edit Post</button>
+                </div>
+            </div>
         </div>
     </div>
     <br />
@@ -39,7 +65,7 @@
     </div>
     <br />
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-6">
             <b>Tags:</b> <h6>@Model.tag</h6>
         </div>
     </div>

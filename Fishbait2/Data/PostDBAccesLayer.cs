@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,7 +59,20 @@ namespace Fishbait2.Models
 
             return posts;
         }
+        public void DeletePost(int id)
+        {
+            using (MySqlCommand query = new MySqlCommand("DELETE FROM courses WHERE id=@id", con))
+            {
+                MySqlParameter param = new MySqlParameter("@id", id);
+                query.Parameters.Add(param);
+                con.Open();
+                var reader = query.ExecuteReader();
+            }
+            con.Close();
+        }
+
     }
-    
 }
+
+
 
