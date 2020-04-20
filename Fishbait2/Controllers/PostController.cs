@@ -25,9 +25,12 @@ namespace Fishbait2.Controllers
         {
             return View();
         }
-        public IActionResult GoToPost(int postID)
+        public IActionResult GoToPost(int id)
         {
-            return View();
+            List<Post> DBPosts = postDB.GetPosts();
+            List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            Post model = IDPosts[0];
+            return View("~/Views/Post/ViewPost.cshtml", model);
         }
 
         [HttpGet]
