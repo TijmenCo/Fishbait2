@@ -18,3 +18,7 @@ footer {
     line-height: 25px;
     word-wrap: break-word;
 }
+.postBoxImageView {
+    height: 100px;
+    width: 100px;
+}
