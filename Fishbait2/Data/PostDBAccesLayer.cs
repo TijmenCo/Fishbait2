@@ -61,7 +61,7 @@ namespace Fishbait2.Models
         }
         public void DeletePost(int id)
         {
-            using (MySqlCommand query = new MySqlCommand("DELETE FROM courses WHERE id=@id", con))
+            using (MySqlCommand query = new MySqlCommand("DELETE FROM post WHERE id=@id", con))
             {
                 MySqlParameter param = new MySqlParameter("@id", id);
                 query.Parameters.Add(param);

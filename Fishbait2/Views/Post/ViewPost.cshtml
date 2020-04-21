@@ -50,9 +50,10 @@
             <br />
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <button href="" type="button" class="btn btn-danger">Delete Post</button>
+                    <a href='@string.Format("/post/DeletePost?id={0}", Model.id)' class="btn btn-danger">Delete Post</a>
                     <br />
-                    <button href="" type="button" class="btn btn-success">Edit Post</button>
+                    <br />
+                    <a href='@string.Format("/post/EditPost?id={0}", Model.id)' class="btn btn-success">Edit Post</a>
                 </div>
             </div>
         </div>

@@ -32,6 +32,30 @@ namespace Fishbait2.Controllers
             Post model = IDPosts[0];
             return View("~/Views/Post/ViewPost.cshtml", model);
         }
+        public IActionResult DeletePost(int id)
+        {
+            postDB.DeletePost(id);
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult EditPost(int id)
+        {
+            List<Post> DBPosts = postDB.GetPosts();
+            List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            Post model = IDPosts[0];
+            PostViewModel realmodel = new PostViewModel();
+            realmodel.id = model.id;
+            realmodel.title = model.title;
+            realmodel.description = model.description;
+            realmodel.tag = model.tag;
+            realmodel.image = model.image;
+
+            return View("~/Views/Post/EditPost.cshtml", realmodel);
+        }
+        public IActionResult EditPostChange(PostViewModel )
+        {
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult Create()
