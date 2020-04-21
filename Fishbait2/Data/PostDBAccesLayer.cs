@@ -70,6 +70,27 @@ namespace Fishbait2.Models
             }
             con.Close();
         }
+        public string UpdatePost(Post post)
+        {
+            try
+            {
+                con.Open();
+                string sql = "UPDATE post SET title = '" + post.title + "', description = '" + post.description + "', tag = '" + post.tag + "', image = '" + post.image +"' WHERE id= '" + post.id +"'";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return ("Data save Successfully");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
+
+        }
 
     }
 }

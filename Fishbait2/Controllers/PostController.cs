@@ -51,9 +51,46 @@ namespace Fishbait2.Controllers
 
             return View("~/Views/Post/EditPost.cshtml", realmodel);
         }
-        public IActionResult EditPostChange(PostViewModel )
+        public async Task<IActionResult> EditPostChange(PostViewModel post)
         {
-            return View();
+            Post realmodel = new Post();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (post.files != null)
+                    {
+                        var uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                        foreach (var file in post.files)
+                        {
+                            realmodel.image = file.FileName;
+                            if (file.Length > 0)
+                            {
+                                using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                                {
+                                    await file.CopyToAsync(fileStream);
+                                }
+                            }
+                        }
+                    }
+                    realmodel.id = post.id;
+                    realmodel.title = post.title;
+                    realmodel.description = post.description;
+                    realmodel.tag = post.tag;
+                    if (post.files == null)
+                    {
+                        realmodel.image = post.image;
+                    }
+
+                    string resp = postDB.UpdatePost(realmodel);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return RedirectToAction("Index", "Home");
         }
 
 

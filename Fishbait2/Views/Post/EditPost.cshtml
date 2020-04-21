@@ -28,6 +28,7 @@
 <div class="container">
     <form asp-action="EditPostChange" enctype="multipart/form-data">
         <div class="form-row col-md-4">
+            <input type="hidden" asp-for="id" />
             <label for="inputTitle">Title</label>
             <input asp-for="title" type="text" class="form-control" id="" placeholder="Title">
             <span asp-validation-for="title" class="text-danger"></span>
@@ -39,6 +40,8 @@
         </div>
         <div class="form-row col-md-4">
             <label for="inputImage">Image</label>
+            <input asp-for="image" type="text" class="form-control" id="">
+            <span asp-validation-for="image" class="text-danger"></span>
             <input asp-for="files" type="file" name="files" multiple />
             <span asp-validation-for="files" class="text-danger"></span>
         </div>
