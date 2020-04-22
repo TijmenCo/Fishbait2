@@ -33,4 +33,8 @@
     <None Include="wwwroot\js\bootstrap.min.js.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
