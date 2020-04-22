@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Fishbait2.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using ClassLibrary;
+
 
 namespace Fishbait2.Controllers
 {
@@ -92,6 +92,10 @@ namespace Fishbait2.Controllers
                 TempData["msg"] = ex.Message;
             }
             return RedirectToAction("Index", "Home");
+        }
+        public IActionResult UpdatePost(int id)
+        {
+            return View("UpdatePost");
         }
 
 
