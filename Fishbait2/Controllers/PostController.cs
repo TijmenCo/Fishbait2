@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Fishbait2.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using ClassLibrary;
 
 namespace Fishbait2.Controllers
 {

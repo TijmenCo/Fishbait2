@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fishbait2.Models
 {
@@ -75,7 +72,7 @@ namespace Fishbait2.Models
             try
             {
                 con.Open();
-                string sql = "UPDATE post SET title = '" + post.title + "', description = '" + post.description + "', tag = '" + post.tag + "', image = '" + post.image + "' WHERE id= '" + post.id + "'";
+                string sql = "UPDATE post SET title = '" + post.title + "', description = '" + post.description + "', tag = '" + post.tag + "', image = '" + post.image +"' WHERE id= '" + post.id +"'";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
