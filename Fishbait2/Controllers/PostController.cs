@@ -83,7 +83,7 @@ namespace Fishbait2.Controllers
                         realmodel.image = post.image;
                     }
 
-                    string resp = postDB.UpdatePost(realmodel);
+                    string resp = postDB.EditPost(realmodel);
 
                 }
             }

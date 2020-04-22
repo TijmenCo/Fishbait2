@@ -70,7 +70,7 @@ namespace Fishbait2.Models
             }
             con.Close();
         }
-        public string UpdatePost(Post post)
+        public string EditPost(Post post)
         {
             try
             {
@@ -90,6 +90,26 @@ namespace Fishbait2.Models
                 return (ex.Message.ToString());
             }
 
+        }
+        public string UpdatePost(PostUpdate post)
+        {
+            try
+            {
+                con.Open();
+                string sql = "INSERT INTO updatepost (title, description, image) VALUES('" + post.title + "', '" + post.description + "', '" + post.image + "');";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return ("Data save Successfully");
+            }
+            catch (Exception ex)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                return (ex.Message.ToString());
+            }
         }
 
     }
