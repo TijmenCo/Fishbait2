@@ -93,10 +93,7 @@ namespace Fishbait2.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult UpdatePost(int id)
-        {
-            return View("UpdatePost");
-        }
+
 
 
         [HttpGet]
@@ -130,7 +127,45 @@ namespace Fishbait2.Controllers
                     realmodel.tag = post.tag;
 
                     string resp = postDB.AddPost(realmodel);
-                   
+
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult UpdatePost(int id, PostUpdateViewModel update)
+        {
+            update.postID = id;
+            return View("UpdatePost", update);
+        }
+        public async Task<IActionResult> CreateUpdatePost(PostUpdateViewModel update)
+        {
+            PostUpdate realupdate = new PostUpdate();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                    foreach (var file in update.files)
+                    {
+                        realupdate.image = file.FileName;
+                        if (file.Length > 0)
+                        {
+                            using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                            {
+                                await file.CopyToAsync(fileStream);
+                            }
+                        }
+                    }
+                    realupdate.postID = update.id;
+                    realupdate.title = update.title;
+                    realupdate.description = update.description;
+
+                    string resp = postDB.UpdatePost(realupdate);
+
                 }
             }
             catch (Exception ex)

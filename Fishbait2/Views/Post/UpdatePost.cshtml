@@ -1,4 +1,4 @@
-﻿@model Fishbait2.Models.PostViewModel
+﻿@model Fishbait2.Models.PostUpdateViewModel;
 <style>
     body {
         position: relative;
@@ -21,8 +21,9 @@
 
 
 <div class="container">
-    <form asp-action="Create" enctype="multipart/form-data">
+    <form asp-action="CreateUpdatePost" enctype="multipart/form-data">
         <div class="form-row col-md-4">
+            <input type="hidden" asp-for="postID" />
             <label for="inputTitle">Title</label>
             <input asp-for="title" type="text" class="form-control" id="" placeholder="Title">
             <span asp-validation-for="title" class="text-danger"></span>

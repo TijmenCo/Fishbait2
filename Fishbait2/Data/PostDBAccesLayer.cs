@@ -96,7 +96,7 @@ namespace Fishbait2.Models
             try
             {
                 con.Open();
-                string sql = "INSERT INTO updatepost (title, description, image) VALUES('" + post.title + "', '" + post.description + "', '" + post.image + "');";
+                string sql = "INSERT INTO updatepost (postID, title, description, image) VALUES('" + post.postID + "', '" + post.title + "', '" + post.description + "', '" + post.image + "');";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
