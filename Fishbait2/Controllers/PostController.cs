@@ -36,8 +36,7 @@ namespace Fishbait2.Controllers
             Post currentmodel = IDPosts[0];
             if (IDUpdatePosts.Any())
             {
-                PostUpdate currentupdatemodel = IDUpdatePosts[0];
-                realmodel.postupdate = currentupdatemodel;
+                realmodel.postupdate = IDUpdatePosts;
             }
             realmodel.post = currentmodel;
             return View("~/Views/Post/ViewPost.cshtml", realmodel);

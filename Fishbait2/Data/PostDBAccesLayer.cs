@@ -129,7 +129,7 @@ namespace Fishbait2.Models
                     post.description = reader.GetString(3);
                     if (!reader.IsDBNull(3))
                     {
-                        post.image = reader.GetString(3);
+                        post.image = reader.GetString(4);
                     }
                     updateposts.Add(post);
                 }
