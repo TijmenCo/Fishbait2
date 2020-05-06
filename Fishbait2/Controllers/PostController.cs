@@ -160,7 +160,7 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    realupdate.postID = update.id;
+                    realupdate.postID = update.postID;
                     realupdate.title = update.title;
                     realupdate.description = update.description;
 
