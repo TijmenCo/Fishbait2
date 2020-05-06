@@ -79,23 +79,28 @@
     <div class="row">
         <a href='@string.Format("/post/UpdatePost?id={0}", Model.post.id)' class="btn btn-dark">Add Update</a>
     </div>
+    <br>
     @foreach (var item in Model.postupdate)
     {
-    <div class="row">
-        <div class="col-md-8">
-            <h4>@item.title</h4>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>@item.title</h4>
+            </div>
+            <div class="col-md-7">
+                <a href='@string.Format("/post/DeleteUpdate?id={0}", item.id)' class="btn btn-danger">Delete Update</a>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 postBoxImageContainer">
-            <img src="~/PostImages/@item.image" alt="image" class="postBoxImage">
+        <div class="row">
+            <div class="col-md-8 postBoxImageContainer">
+                <img src="~/PostImages/@item.image" alt="image" class="postBoxImage">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-7">
-            @item.description
+        <div class="row">
+            <div class="col-md-7">
+                @item.description
+            </div>
+
         </div>
-    </div>
     }
 </div>
 

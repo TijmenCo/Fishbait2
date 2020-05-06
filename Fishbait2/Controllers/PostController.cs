@@ -46,6 +46,11 @@ namespace Fishbait2.Controllers
             postDB.DeletePost(id);
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult DeleteUpdate(int id)
+        {
+            postDB.DeleteUpdate(id);
+            return RedirectToAction("Index", "Home");
+        }
         public IActionResult EditPost(int id)
         {
             List<Post> DBPosts = postDB.GetPosts();

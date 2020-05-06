@@ -71,6 +71,17 @@ namespace Fishbait2.Models
             }
             con.Close();
         }
+        public void DeleteUpdate(int id)
+        {
+            using (MySqlCommand query = new MySqlCommand("DELETE FROM updatepost WHERE id=@id", con))
+            {
+                MySqlParameter param = new MySqlParameter("@id", id);
+                query.Parameters.Add(param);
+                con.Open();
+                var reader = query.ExecuteReader();
+            }
+            con.Close();
+        }
         public string EditPost(Post post)
         {
             try
