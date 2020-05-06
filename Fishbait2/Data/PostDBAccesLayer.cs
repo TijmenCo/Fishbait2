@@ -55,6 +55,7 @@ namespace Fishbait2.Models
                     }
                     posts.Add(post);
                 }
+                con.Close();
             }
 
             return posts;
@@ -110,6 +111,31 @@ namespace Fishbait2.Models
                 }
                 return (ex.Message.ToString());
             }
+        }
+        public List<PostUpdate> GetUpdatePosts()
+        {
+            List<PostUpdate> updateposts = new List<PostUpdate>();
+
+            using (MySqlCommand query = new MySqlCommand("select * from updatepost", con))
+            {
+                con.Open();
+                var reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    PostUpdate post = new PostUpdate();
+                    post.id = reader.GetInt32(0);
+                    post.postID = reader.GetInt32(1);
+                    post.title = reader.GetString(2);
+                    post.description = reader.GetString(3);
+                    if (!reader.IsDBNull(3))
+                    {
+                        post.image = reader.GetString(3);
+                    }
+                    updateposts.Add(post);
+                }
+            }
+
+            return updateposts;
         }
 
     }

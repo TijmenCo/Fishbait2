@@ -7,7 +7,8 @@ namespace Fishbait2.Models
 {
     public class PostAndUpdateViewModel
     {
-        public IEnumerable<Post> post { get; set; }
-        public IEnumerable<PostUpdate> postUpdate { get; set; }
+        public Post post { get; set; }
+
+        public PostUpdate postupdate { get; set; }
     }
 }

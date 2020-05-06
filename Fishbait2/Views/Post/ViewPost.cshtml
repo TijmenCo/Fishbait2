@@ -1,4 +1,4 @@
-﻿@model Fishbait2.Models.Post
+﻿@model Fishbait2.Models.PostAndUpdateViewModel
 @{
     ViewData["Title"] = "@Model.Titel";
 }
@@ -32,12 +32,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h2>@Model.title</h2>
+            <h2>@Model.post.title</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 postBoxImageContainer">
-            <img src="~/PostImages/@Model.image" alt="image" class="postBoxImage">
+            <img src="~/PostImages/@Model.post.image" alt="image" class="postBoxImage">
         </div>
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
@@ -50,10 +50,10 @@
             <br />
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <a href='@string.Format("/post/DeletePost?id={0}", Model.id)' class="btn btn-danger">Delete Post</a>
+                    <a href='@string.Format("/post/DeletePost?id={0}", Model.post.id)' class="btn btn-danger">Delete Post</a>
                     <br />
                     <br />
-                    <a href='@string.Format("/post/EditPost?id={0}", Model.id)' class="btn btn-success">Edit Post</a>
+                    <a href='@string.Format("/post/EditPost?id={0}", Model.post.id)' class="btn btn-success">Edit Post</a>
                 </div>
             </div>
         </div>
@@ -61,19 +61,19 @@
     <br />
     <div class="row">
         <div class="col-md-7">
-            @Model.description
+            @Model.post.description
         </div>
     </div>
     <br />
     <div class="row">
         <div class="col-md-6">
-            <b>Tags:</b> <h6>@Model.tag</h6>
+            <b>Tags:</b> <h6>@Model.post.tag</h6>
         </div>
         <br />
         <br />
     </div>
     <div class="row">
-        <a href='@string.Format("/post/UpdatePost?id={0}", Model.id)' class="btn btn-dark">Add Update</a>
+        <a href='@string.Format("/post/UpdatePost?id={0}", Model.post.id)' class="btn btn-dark">Add Update</a>
     </div>
 </div>
 
