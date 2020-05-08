@@ -7,7 +7,6 @@ using Fishbait2.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Fishbait2.Controllers
 {
     public class PostController : Controller
