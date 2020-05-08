@@ -7,7 +7,7 @@ namespace Fishbait2.Models
 {
     public class PostAndUpdateViewModel
     {
-        public Post post { get; set; }
+        public PostViewModel post { get; set; }
 
         public List<PostUpdate> postupdate { get; set; }
     }

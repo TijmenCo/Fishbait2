@@ -29,13 +29,34 @@ namespace Fishbait2.Controllers
         public IActionResult GoToPost(int id)
         {
             PostAndUpdateViewModel realmodel = new PostAndUpdateViewModel();
+            PostViewModel realpostmodel = new PostViewModel();
+            PostUpdateViewModel realupdatemodel = new PostUpdateViewModel();
+
             List<Post> DBPosts = postDB.GetPosts();
             List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            Post currentmodel = IDPosts[0];
+
+            realpostmodel.id = currentmodel.id;
+            realpostmodel.title = currentmodel.title;
+            realpostmodel.description = currentmodel.description;
+            realpostmodel.tag = currentmodel.tag;
+            realpostmodel.image = currentmodel.image;
+
             List<PostUpdate> DBUpdatePosts = postDB.GetUpdatePosts();
             List<PostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
-            Post currentmodel = IDPosts[0];
+            PostUpdate currentupdatemodel = DBUpdatePosts[0];
+
+            realupdatemodel.id = currentupdatemodel.id;
+            realupdatemodel.postID = currentupdatemodel.postID;
+            realupdatemodel.title = currentupdatemodel.title;
+            realupdatemodel.description = currentupdatemodel.description;
+            realupdatemodel.image = currentupdatemodel.image;
+            List<PostUpdateViewModel> RealUpdateList = new List<PostUpdateViewModel>();
+            RealUpdateList.Add(realupdatemodel);
+
+
             realmodel.postupdate = IDUpdatePosts;
-            realmodel.post = currentmodel;
+            realmodel.post = realpostmodel;
             return View("~/Views/Post/ViewPost.cshtml", realmodel);
         }
         public IActionResult DeletePost(int id)
