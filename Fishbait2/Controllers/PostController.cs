@@ -51,6 +51,7 @@ namespace Fishbait2.Controllers
             realupdatemodel.title = currentupdatemodel.title;
             realupdatemodel.description = currentupdatemodel.description;
             realupdatemodel.image = currentupdatemodel.image;
+
             List<PostUpdateViewModel> RealUpdateList = new List<PostUpdateViewModel>();
             RealUpdateList.Add(realupdatemodel);
 
