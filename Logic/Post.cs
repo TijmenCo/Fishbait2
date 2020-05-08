@@ -1,4 +1,5 @@
 ﻿using System;
+using Fishbait2.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Fishbait2.Models
        
         public string image { get; set; }
         public string tag { get; set; }
-
+        
     }
+   
 }
