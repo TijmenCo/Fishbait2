@@ -80,6 +80,7 @@
         <a href='@string.Format("/post/UpdatePost?id={0}", Model.post.id)' class="btn btn-dark">Add Update</a>
     </div>
     <br>
+    
     @foreach (var item in Model.postupdate)
     {
         <div class="row">
@@ -99,8 +100,8 @@
             <div class="col-md-7">
                 @item.description
             </div>
-
         </div>
+        
     }
 </div>
 

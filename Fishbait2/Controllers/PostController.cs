@@ -34,10 +34,7 @@ namespace Fishbait2.Controllers
             List<PostUpdate> DBUpdatePosts = postDB.GetUpdatePosts();
             List<PostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
             Post currentmodel = IDPosts[0];
-            if (IDUpdatePosts.Any())
-            {
-                realmodel.postupdate = IDUpdatePosts;
-            }
+            realmodel.postupdate = IDUpdatePosts;
             realmodel.post = currentmodel;
             return View("~/Views/Post/ViewPost.cshtml", realmodel);
         }
