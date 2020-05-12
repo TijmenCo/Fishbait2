@@ -8,5 +8,6 @@ namespace Fishbait2.Models
     public class HomeViewModel
     {
         public IEnumerable<Post> Posts { get; set; }
+        public string tag { get; set; }
     }
 }

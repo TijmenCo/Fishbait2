@@ -2,26 +2,51 @@
 @{
     ViewData["Title"] = "Home";
 }
+<div class="container">
+    <form asp-action="Create">
+        <div class="row col-xs-3 col-sm-3 col-md-3">
+            <label for="inputTag">Tag</label>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="form-group">
+                    <select asp-for="tag" id="inputTag" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Tech</option>
+                        <option>Nature</option>
+                        <option>Creative</option>
+                    </select>
+                    <span asp-validation-for="tag" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 
 @foreach (var item in Model.Posts)
 {
     <div class="container">
-            <div class="row justify-content-md-center postBox">
-                <div class="col-3 bg-primary text-white postBoxImageContainer">
-                    <img src="~/PostImages/@item.image" alt="image" class="postBoxImage">
-                </div>
-                <div class="col-7 bg-secondary text-white">
-                    <div class="postBoxText">
-                        <b>@item.title</b>
-                        <br />
-                           @item.description
-
-                    </div>
-                </div>
-                <div class="col-2 bg-success text-white text-center">
-                    <a href='@string.Format("/post/GoToPost?id={0}", item.id)' class="btn btn-primary stretched-link">View Post</a>
+        <div class="row justify-content-md-center postBox">
+            <div class="col-3 bg-primary text-white postBoxImageContainer">
+                <img src="~/PostImages/@item.image" alt="image" class="postBoxImage">
+            </div>
+            <div class="col-7 bg-secondary text-white">
+                <div class="postBoxText">
+                    <b>@item.title</b>
+                    <br />
+                    @item.description
                 </div>
             </div>
+            <div class="col-2 bg-success text-white text-center">
+                <a href='@string.Format("/post/GoToPost?id={0}", item.id)' class="btn btn-primary stretched-link">View Post</a>
+            </div>
+        </div>
     </div>
 }
