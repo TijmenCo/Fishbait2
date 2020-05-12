@@ -25,6 +25,16 @@ namespace Fishbait2.Controllers
         {
             return View();
         }
+        public IActionResult Search(string result)
+        {
+            List<Post> events = new List<Post>();
+            events = postDB.GetPosts().Where(s => s.title.Contains(result)).ToList();
+            if (!events.Any())
+            {
+                return View("~/Views/Post/ErrorPost.cshtml");
+            }
+            return View("~/Views/Home/Index.cshtml", events);
+        }
         public IActionResult GoToPost(int id)
         {
             PostAndUpdateViewModel realmodel = new PostAndUpdateViewModel();

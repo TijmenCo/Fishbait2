@@ -21,9 +21,11 @@
                     <img src="~/Images/FishbaitLogo.png" alt="FISHBAIT" style="width:90px;">
                 </a>
                 <div class="navbar-nav">
-                    <input type="text" class="form-control mr-sm-2" placeholder="Search">
-                    <a class="nav-item nav-link active text-nowrap" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="nav-item nav-link active text-nowrap" asp-area="" asp-controller="Post" asp-action="CreatePost">Create Post</a>
+                    <form class="form-inline" asp-action="Search" asp-controller="Post">
+                        <input type="text" class="form-control mr-sm-2" placeholder="Search" name="result">
+                        </form>
+                        <a class="nav-item nav-link active text-nowrap" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-item nav-link active text-nowrap" asp-area="" asp-controller="Post" asp-action="CreatePost">Create Post</a>
                 </div>
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link text-nowrap" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
