@@ -10,6 +10,7 @@ namespace Fishbait2.Controllers
 {
     public class HomeController : Controller
     {
+       
         public IActionResult Index()
         {
             PostDBAccesLayer postsDB = new PostDBAccesLayer();

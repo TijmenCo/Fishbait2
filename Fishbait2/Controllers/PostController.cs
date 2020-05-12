@@ -37,6 +37,13 @@ namespace Fishbait2.Controllers
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }
+        public IActionResult Filter(HomeViewModel home)
+        {
+            List<Post> events = new List<Post>();
+            events = postDB.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
+            home.Posts = events;
+            return View("~/Views/Home/Index.cshtml", home);
+        }
         public IActionResult GoToPost(int id)
         {
             PostAndUpdateViewModel realmodel = new PostAndUpdateViewModel();
