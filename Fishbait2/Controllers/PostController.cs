@@ -27,13 +27,15 @@ namespace Fishbait2.Controllers
         }
         public IActionResult Search(string result)
         {
+            HomeViewModel home = new HomeViewModel();
             List<Post> events = new List<Post>();
             events = postDB.GetPosts().Where(s => s.title.Contains(result)).ToList();
             if (!events.Any())
             {
                 return View("~/Views/Post/ErrorPost.cshtml");
             }
-            return View("~/Views/Home/Index.cshtml", events);
+            home.Posts = events;
+            return View("~/Views/Home/Index.cshtml", home);
         }
         public IActionResult GoToPost(int id)
         {

@@ -14,7 +14,9 @@ namespace Fishbait2.Controllers
         {
             PostDBAccesLayer postsDB = new PostDBAccesLayer();
             var posts = postsDB.GetPosts();
-            return View(posts);
+            HomeViewModel home = new HomeViewModel();
+            home.Posts = posts;
+            return View(home);
         }
     }
 }

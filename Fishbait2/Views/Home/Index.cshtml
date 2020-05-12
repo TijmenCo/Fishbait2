@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Post>
+﻿@model HomeViewModel
 @{
     ViewData["Title"] = "Home";
 }
 
 
-@foreach (var item in Model)
+@foreach (var item in Model.Posts)
 {
     <div class="container">
             <div class="row justify-content-md-center postBox">
