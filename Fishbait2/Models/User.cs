@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using MySql.Data.MySqlClient;
 
-namespace DAL.Models
+namespace Fishbait2.Models
 {
-    class UserDto
+    public class User
     {
         [Required]
         public int id { get; set; }
@@ -19,5 +21,7 @@ namespace DAL.Models
         public string mail { get; set; }
 
         public string preference { get; set; }
+
+   
     }
 }

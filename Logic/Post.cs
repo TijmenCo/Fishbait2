@@ -17,7 +17,7 @@ namespace Fishbait2.Models
         public string image { get; set; }
         public string tag { get; set; }
 
-        public void Search()
+        public void SearchPosts()
         {
             List<Post> events = new List<Post>();
         }
