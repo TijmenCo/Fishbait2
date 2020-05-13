@@ -9,14 +9,9 @@
         </div>
         <div class="row">
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">
-                    <select asp-for="tag" id="inputTag" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Tech</option>
-                        <option>Nature</option>
-                        <option>Creative</option>
-                    </select>
-                    <span asp-validation-for="tag" class="text-danger"></span>
+                <div class="form-group">       
+                        <select asp-for="tags" asp-items="@Html.GetEnumSelectList<Tags>()" class="form-control"></select>
+                        <span asp-validation-for="tags" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2">

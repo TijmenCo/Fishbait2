@@ -9,5 +9,6 @@ namespace Fishbait2.Models
     {
         public IEnumerable<Post> Posts { get; set; }
         public string tag { get; set; }
+        public Tags tags { get; set; }
     }
 }

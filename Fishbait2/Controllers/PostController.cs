@@ -40,6 +40,7 @@ namespace Fishbait2.Controllers
         public IActionResult Filter(HomeViewModel home)
         {
             List<Post> events = new List<Post>();
+            home.tag = home.tags.ToString();
             events = postDB.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
