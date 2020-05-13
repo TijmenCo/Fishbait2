@@ -174,7 +174,7 @@ namespace Fishbait2.Controllers
                     realmodel.id = post.id;
                     realmodel.title = post.title;
                     realmodel.description = post.description;
-                    realmodel.tag = post.tag;
+                    realmodel.tag = post.tags.ToString();
 
                     string resp = postDB.AddPost(realmodel);
 

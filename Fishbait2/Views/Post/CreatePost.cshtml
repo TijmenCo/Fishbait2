@@ -19,14 +19,11 @@
             <span asp-validation-for="files" class="text-danger"></span>
         </div>
         <div class="form-row col-md-4">
-            <label for="inputTag">Tag</label>
-            <select asp-for="tag" id="inputTag" class="form-control">
-                <option selected>Choose...</option>
-                <option>Tech</option>
-                <option>Nature</option>
-                <option>Creative</option>
-            </select>
-            <span asp-validation-for="tag" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="tags" class="control-label"></label>
+                <select asp-for="tags" asp-items="@Html.GetEnumSelectList<Tags>()" class="form-control"></select>
+                <span asp-validation-for="tags" class="text-danger"></span>
+            </div>
         </div>
         <br />
         <div class="form-row col-md-4">
