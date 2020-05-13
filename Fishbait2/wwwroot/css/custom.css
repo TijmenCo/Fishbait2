@@ -30,11 +30,12 @@ footer {
 .textarea {
     resize: none;
 }
+.postBoxViewPost {
+    height: 250px;
+}
 .postBoxImageViewPost {
     max-height: 250px;
-    max-width: 500px;
-    min-height: 150px;
-    min-width: 150px;
+    max-width: 250px;
 }
 
 .postBoxImageContainerViewPost {

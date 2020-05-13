@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "@Model.Titel";
 }
-
+    <link href="~/css/custom.css" rel="stylesheet" />
 
 
 <div class="container">
@@ -11,9 +11,9 @@
             <h2>@Model.post.title</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row postBoxViewPost">
         <div class="col-md-8 postBoxImageContainerViewPost">
-            <img src="~/PostImages/@Model.post.image" alt="image" class="postBoxImageViewPost">
+            <img src="~/PostImages/@Model.post.image" alt="image" class="postBoxImage">
         </div>
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
