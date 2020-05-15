@@ -1,4 +1,5 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
+using DAL.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Fishbait2.Models
     public class PostDBAccesLayer
     {
         MySqlConnection con = new MySqlConnection("Server=localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
-        public string AddPost(Post post)
+        public string AddPost(PostDto post)
         {
             try
             {
@@ -31,9 +32,9 @@ namespace Fishbait2.Models
                 return (ex.Message.ToString());
             }
         }
-        public List<Post> GetPosts()
+        public List<PostDto> GetPosts()
         {
-            List<Post> posts = new List<Post>();
+            List<PostDto> posts = new List<PostDto>();
 
             using (MySqlCommand query = new MySqlCommand("select * from post", con))
             {
@@ -41,7 +42,7 @@ namespace Fishbait2.Models
                 var reader = query.ExecuteReader();
                 while (reader.Read())
                 {
-                    Post post = new Post();
+                    PostDto post = new PostDto();
                     post.id = reader.GetInt32(0);
                     post.title = reader.GetString(1);
                     post.description = reader.GetString(2);
@@ -82,7 +83,7 @@ namespace Fishbait2.Models
             }
             con.Close();
         }
-        public string EditPost(Post post)
+        public string EditPost(PostDto post)
         {
             try
             {
@@ -103,7 +104,7 @@ namespace Fishbait2.Models
             }
 
         }
-        public string UpdatePost(PostUpdate post)
+        public string UpdatePost(PostUpdateDto post)
         {
             try
             {
@@ -123,9 +124,9 @@ namespace Fishbait2.Models
                 return (ex.Message.ToString());
             }
         }
-        public List<PostUpdate> GetUpdatePosts()
+        public List<PostUpdateDto> GetUpdatePosts()
         {
-            List<PostUpdate> updateposts = new List<PostUpdate>();
+            List<PostUpdateDto> updateposts = new List<PostUpdateDto>();
 
             using (MySqlCommand query = new MySqlCommand("select * from updatepost", con))
             {
@@ -133,7 +134,7 @@ namespace Fishbait2.Models
                 var reader = query.ExecuteReader();
                 while (reader.Read())
                 {
-                    PostUpdate post = new PostUpdate();
+                    PostUpdateDto post = new PostUpdateDto();
                     post.id = reader.GetInt32(0);
                     post.postID = reader.GetInt32(1);
                     post.title = reader.GetString(2);

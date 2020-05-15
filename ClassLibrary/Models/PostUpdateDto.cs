@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL.Models
 {
-    class PostUpdateDto
+    public class PostUpdateDto
     {
         [Key]
         public int id { get; set; }

@@ -27,6 +27,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult Search(string result)
         {
+            
             HomeViewModel home = new HomeViewModel();
             List<Post> events = new List<Post>();
             events = postDB.GetPosts().Where(s => s.title.Contains(result)).ToList();
