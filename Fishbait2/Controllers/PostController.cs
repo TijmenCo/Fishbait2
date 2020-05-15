@@ -15,10 +15,10 @@ namespace Fishbait2.Controllers
         private readonly IWebHostEnvironment _environment;
         private Post refPost;
         private PostUpdate refPostUpdate;
-        public PostController(IWebHostEnvironment environment, Post post, PostUpdate postupdate)
+        public PostController(IWebHostEnvironment environment)
         {
-            refPost = post;
-            refPostUpdate = postupdate;
+            refPost = new Post();
+            refPostUpdate = new PostUpdate();
             _environment = environment;
         }
         public IActionResult Index()
