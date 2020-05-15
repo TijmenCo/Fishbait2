@@ -30,7 +30,7 @@ namespace Fishbait2.Controllers
             
             HomeViewModel home = new HomeViewModel();
             List<Post> events = new List<Post>();
-            events = postDB.GetPosts().Where(s => s.title.Contains(result)).ToList();
+            events = Post.GetPosts().Where(s => s.title.Contains(result)).ToList();
             if (!events.Any())
             {
                 return View("~/Views/Post/ErrorPost.cshtml");
@@ -42,7 +42,7 @@ namespace Fishbait2.Controllers
         {
             List<Post> events = new List<Post>();
             home.tag = home.tags.ToString();
-            events = postDB.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
+            events = Post.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }
@@ -52,7 +52,7 @@ namespace Fishbait2.Controllers
             PostViewModel realpostmodel = new PostViewModel();
             PostUpdateViewModel realupdatemodel = new PostUpdateViewModel();
 
-            List<Post> DBPosts = postDB.GetPosts();
+            List<Post> DBPosts = Post.GetPosts();
             List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             Post currentmodel = IDPosts[0];
 
