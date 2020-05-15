@@ -11,12 +11,14 @@ namespace Fishbait2.Controllers
 {
     public class PostController : Controller
     {
-        PostDBAccesLayer postDB = new PostDBAccesLayer();
+      //  PostDBAccesLayer postDB = new PostDBAccesLayer();
         private readonly IWebHostEnvironment _environment;
-        private Post refPost; 
-        public PostController(IWebHostEnvironment environment, Post post)
+        private Post refPost;
+        private PostUpdate refPostUpdate;
+        public PostController(IWebHostEnvironment environment, Post post, PostUpdate postupdate)
         {
             refPost = post;
+            refPostUpdate = postupdate;
             _environment = environment;
         }
         public IActionResult Index()
@@ -64,7 +66,7 @@ namespace Fishbait2.Controllers
             realpostmodel.tag = currentmodel.tag;
             realpostmodel.image = currentmodel.image;
 
-            List<PostUpdate> DBUpdatePosts = PostUpdate.GetUpdatePosts();
+            List<PostUpdate> DBUpdatePosts = refPostUpdate.GetUpdatePosts();
             List<PostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
             PostUpdate currentupdatemodel = DBUpdatePosts[0];
 
@@ -84,7 +86,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult DeletePost(int id)
         {
-            postDB.DeletePost(id);
+            refPost.DeletePost(id);
             return RedirectToAction("Index", "Home");
         }
         public IActionResult DeleteUpdate(int id)
@@ -180,7 +182,7 @@ namespace Fishbait2.Controllers
                     realmodel.description = post.description;
                     realmodel.tag = post.tags.ToString();
 
-                    string resp = postDB.AddPost(realmodel);
+                    string resp = refPost.AddPost(realmodel);
 
                 }
             }
@@ -218,7 +220,7 @@ namespace Fishbait2.Controllers
                     realupdate.title = update.title;
                     realupdate.description = update.description;
 
-                    string resp = postDB.UpdatePost(realupdate);
+                    string resp = refPostUpdate.(realupdate);
 
                 }
             }

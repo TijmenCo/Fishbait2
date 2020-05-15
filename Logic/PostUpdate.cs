@@ -18,9 +18,8 @@ namespace Fishbait2.Models
         public string description { get; set; }
 
         public string image { get; set; }
-        public static List<PostUpdate> GetUpdatePosts()
+        public List<PostUpdate> GetUpdatePosts()
         {
-            PostDBAccesLayer postDB = new PostDBAccesLayer();
             List<PostUpdateDto> AllPostUpdates = new List<PostUpdateDto>();
             List<PostUpdate> RealAllPostUpdates = new List<PostUpdate>();
             AllPostUpdates = postDB.GetUpdatePosts();
@@ -35,6 +34,10 @@ namespace Fishbait2.Models
                 RealAllPostUpdates.Add(post);
             }
             return (RealAllPostUpdates);
+        }
+        public void DeleteUpdate(int id)
+        {
+            postDB.DeleteUpdate(id);
         }
     }
     

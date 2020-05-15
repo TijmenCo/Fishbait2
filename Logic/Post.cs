@@ -18,20 +18,19 @@ namespace Fishbait2.Models
        
         public string image { get; set; }
         public string tag { get; set; }
-        public void AddPost(Post model)
+        public string AddPost(Post model)
         {
-            PostDBAccesLayer postDB = new PostDBAccesLayer();
             PostDto realmodel = new PostDto();
             realmodel.id = model.id;
             realmodel.title = model.title;
             realmodel.description = model.description;
             realmodel.image = model.image;
             realmodel.tag = model.tag;
-            postDB.AddPost(realmodel);
+            string resp = postDB.AddPost(realmodel);
+            return (resp);
         }
         public List<Post> GetPosts()
         {
-            PostDBAccesLayer postDB = new PostDBAccesLayer();
             List<PostDto> AllPosts = new List<PostDto>();
             List<Post> RealAllPosts = new List<Post>();
             AllPosts = postDB.GetPosts();
@@ -46,6 +45,10 @@ namespace Fishbait2.Models
                 RealAllPosts.Add(post);
             }
             return (RealAllPosts);
+        }
+        public void DeletePost(int id)
+        {
+            postDB.DeletePost(id);
         }
     
     }
