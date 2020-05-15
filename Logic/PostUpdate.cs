@@ -10,7 +10,7 @@ namespace Fishbait2.Models
 {
     public class PostUpdate : IPostUpdate
     {
-        PostDBAccesLayer postDB = new PostDBAccesLayer();
+        private IPostDBAccesLayer postDB;
         [Key]
         public int id { get; set; }
         public int postID { get; set; }
@@ -22,13 +22,13 @@ namespace Fishbait2.Models
 
         public string AddUpdatePost(IPostUpdate model)
         {
-            IPostUpdateDto postUpdateDto = PostDBFactory.GetPost();
+            IPostUpdateDto postUpdateDto = PostDBFactory.GetPostUpdate();
             postUpdateDto.id = model.id;
+            postUpdateDto.postID = model.postID;
             postUpdateDto.title = model.title;
             postUpdateDto.description = model.description;
             postUpdateDto.image = model.image;
-            postUpdateDto.tag = model.tag;
-            string resp = postDB.AddPost(postDto);
+            string resp = postDB.AddUpdatePost(postUpdateDto);
             return (resp);
         }
         public List<IPostUpdate> GetUpdatePosts()

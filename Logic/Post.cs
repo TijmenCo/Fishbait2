@@ -12,6 +12,7 @@ namespace Fishbait2.Models
     public class Post : IPost
     {
         private IPostDBAccesLayer postDB;
+        private List<IPost> posts { get; set; }
       //  PostDBAccesLayer postDB = new PostDBAccesLayer();
 
         public int id { get; set; }
@@ -33,20 +34,19 @@ namespace Fishbait2.Models
         }
         public List<IPost> GetPosts()
         {
-            List<PostDto> AllPosts = new List<PostDto>();
-            List<Post> RealAllPosts = new List<Post>();
-            AllPosts = postDB.GetPosts();
-            foreach (var item in AllPosts)
+            List<IPostDto> AllPosts = postDB.GetPosts();
+            foreach (IPostDto model in AllPosts)
             {
-                Post post = new Post();
-                post.id = item.id;
-                post.title = item.title;
-                post.description = item.description;
-                post.image = item.image;
-                post.tag = item.tag;
-                RealAllPosts.Add(post);
+                posts.Add(new Post()
+                {
+                    id = model.id,
+                    title = model.title,
+                    description = model.description,
+                    image = model.image,
+                    tag = model.tag
+                });
             }
-            return (RealAllPosts);
+            return (posts);
         }
         public void DeletePost(int id)
         {

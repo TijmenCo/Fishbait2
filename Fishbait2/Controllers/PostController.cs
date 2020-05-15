@@ -36,7 +36,7 @@ namespace Fishbait2.Controllers
             
             HomeViewModel home = new HomeViewModel();
             List<Post> events = new List<Post>();
-            events = refPost.GetPosts().Where(s => s.title.Contains(result)).ToList();
+            events = iPost.GetPosts().Where(s => s.title.Contains(result)).ToList();
             if (!events.Any())
             {
                 return View("~/Views/Post/ErrorPost.cshtml");
