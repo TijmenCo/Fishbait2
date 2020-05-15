@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\DAL.csproj" />
+    <ProjectReference Include="..\DALFactories\DALFactories.csproj" />
     <ProjectReference Include="..\InterfaceLogic\LogicInterfaces.csproj" />
   </ItemGroup>
 
