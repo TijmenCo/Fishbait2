@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\DAL.csproj" />
+    <ProjectReference Include="..\DALInterfaces\DALInterfaces.csproj" />
+  </ItemGroup>
+
 </Project>
