@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Fishbait2.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Factories
 {
-    class PostFactory
+    public static class PostFactory
     {
+        public static IPost GetPost()
+        {
+            return new Post();
+        }
     }
 }

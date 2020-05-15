@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fishbait2.Models
 {
-    public class PostDBAccesLayer
+    public class PostDBAccesLayer : IPostDBAccesLayer
     {
         MySqlConnection con = new MySqlConnection("Server=localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
         public string AddPost(PostDto post)
