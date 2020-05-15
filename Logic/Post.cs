@@ -8,14 +8,14 @@ using DAL.Models;
 
 namespace Fishbait2.Models
 {
-    public class Post
+    public class Post : IPost
     {
         PostDBAccesLayer postDB = new PostDBAccesLayer();
 
         public int id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-       
+
         public string image { get; set; }
         public string tag { get; set; }
         public string AddPost(Post model)
@@ -61,8 +61,8 @@ namespace Fishbait2.Models
             string resp = postDB.EditPost(realmodel);
             return (resp);
         }
-    
+
     }
 
-   
+
 }

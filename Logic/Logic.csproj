@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\DAL.csproj" />
+    <ProjectReference Include="..\InterfaceLogic\InterfaceLogic.csproj" />
   </ItemGroup>
 
 </Project>
