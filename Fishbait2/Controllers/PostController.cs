@@ -35,7 +35,7 @@ namespace Fishbait2.Controllers
         {
             
             HomeViewModel home = new HomeViewModel();
-            List<Post> events = new List<Post>();
+            List<IPost> events = new List<IPost>();
             events = iPost.GetPosts().Where(s => s.title.Contains(result)).ToList();
             if (!events.Any())
             {
@@ -46,9 +46,9 @@ namespace Fishbait2.Controllers
         }
         public IActionResult Filter(HomeViewModel home)
         {
-            List<Post> events = new List<Post>();
+            List<IPost> events = new List<IPost>();
             home.tag = home.tags.ToString();
-            events = refPost.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
+            events = iPost.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }

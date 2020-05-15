@@ -7,7 +7,7 @@ namespace Fishbait2.Models
 {
     public class HomeViewModel
     {
-        public IEnumerable<Post> Posts { get; set; }
+        public IEnumerable<IPost> Posts { get; set; }
         public string tag { get; set; }
         public Tags tags { get; set; }
     }
