@@ -13,8 +13,10 @@ namespace Fishbait2.Controllers
     {
         PostDBAccesLayer postDB = new PostDBAccesLayer();
         private readonly IWebHostEnvironment _environment;
-        public PostController(IWebHostEnvironment environment)
+        private Post refPost; 
+        public PostController(IWebHostEnvironment environment, Post post)
         {
+            refPost = post;
             _environment = environment;
         }
         public IActionResult Index()
@@ -30,7 +32,7 @@ namespace Fishbait2.Controllers
             
             HomeViewModel home = new HomeViewModel();
             List<Post> events = new List<Post>();
-            events = Post.GetPosts().Where(s => s.title.Contains(result)).ToList();
+            events = refPost.GetPosts().Where(s => s.title.Contains(result)).ToList();
             if (!events.Any())
             {
                 return View("~/Views/Post/ErrorPost.cshtml");
@@ -42,7 +44,7 @@ namespace Fishbait2.Controllers
         {
             List<Post> events = new List<Post>();
             home.tag = home.tags.ToString();
-            events = Post.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
+            events = refPost.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }
@@ -52,7 +54,7 @@ namespace Fishbait2.Controllers
             PostViewModel realpostmodel = new PostViewModel();
             PostUpdateViewModel realupdatemodel = new PostUpdateViewModel();
 
-            List<Post> DBPosts = Post.GetPosts();
+            List<Post> DBPosts = refPost.GetPosts();
             List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             Post currentmodel = IDPosts[0];
 
@@ -62,7 +64,7 @@ namespace Fishbait2.Controllers
             realpostmodel.tag = currentmodel.tag;
             realpostmodel.image = currentmodel.image;
 
-            List<PostUpdate> DBUpdatePosts = postDB.GetUpdatePosts();
+            List<PostUpdate> DBUpdatePosts = PostUpdate.GetUpdatePosts();
             List<PostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
             PostUpdate currentupdatemodel = DBUpdatePosts[0];
 
@@ -92,7 +94,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult EditPost(int id)
         {
-            List<Post> DBPosts = postDB.GetPosts();
+            List<Post> DBPosts = refPost.GetPosts();
             List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             Post model = IDPosts[0];
             PostViewModel realmodel = new PostViewModel();

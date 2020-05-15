@@ -1,4 +1,5 @@
-﻿using Fishbait2.Models;
+﻿using DAL.Models;
+using Fishbait2.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Fishbait2.Data
     public class LoginDBAccesLayer
     {
         public string connectionString = "Server=localhost;Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123";
-        public List<User> GetUsers()
+        public List<UserDto> GetUsers()
         {
-            List<User> users = new List<User>();
+            List<UserDto> users = new List<UserDto>();
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 using (MySqlCommand query = new MySqlCommand("select * from user", conn))
@@ -21,7 +22,7 @@ namespace Fishbait2.Data
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        User user = new User();
+                        UserDto user = new UserDto();
                         user.id = reader.GetInt32(0);
                         user.username = reader.GetString(1);
                         user.password = reader.GetString(2);
