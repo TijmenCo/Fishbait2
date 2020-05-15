@@ -91,7 +91,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult DeleteUpdate(int id)
         {
-            postDB.DeleteUpdate(id);
+            refPostUpdate.DeleteUpdate(id);
             return RedirectToAction("Index", "Home");
         }
         public IActionResult EditPost(int id)
@@ -139,7 +139,7 @@ namespace Fishbait2.Controllers
                         realmodel.image = post.image;
                     }
 
-                    string resp = postDB.EditPost(realmodel);
+                    string resp = refPost.EditPost(realmodel);
 
                 }
             }
@@ -220,7 +220,7 @@ namespace Fishbait2.Controllers
                     realupdate.title = update.title;
                     realupdate.description = update.description;
 
-                    string resp = refPostUpdate.(realupdate);
+                    string resp = refPostUpdate.AddUpdatePost(realupdate);
 
                 }
             }

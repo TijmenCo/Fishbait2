@@ -104,7 +104,7 @@ namespace Fishbait2.Models
             }
 
         }
-        public string UpdatePost(PostUpdateDto post)
+        public string AddUpdatePost(PostUpdateDto post)
         {
             try
             {

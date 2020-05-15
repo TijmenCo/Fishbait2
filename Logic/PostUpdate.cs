@@ -18,6 +18,18 @@ namespace Fishbait2.Models
         public string description { get; set; }
 
         public string image { get; set; }
+
+        public string AddUpdatePost(PostUpdate model)
+        {
+            PostUpdateDto realmodel = new PostUpdateDto();
+            realmodel.id = model.id;
+            realmodel.postID = model.postID;
+            realmodel.title = model.title;
+            realmodel.description = model.description;
+            realmodel.image = model.image;
+            string resp = postDB.AddUpdatePost(realmodel);
+            return (resp);
+        }
         public List<PostUpdate> GetUpdatePosts()
         {
             List<PostUpdateDto> AllPostUpdates = new List<PostUpdateDto>();
