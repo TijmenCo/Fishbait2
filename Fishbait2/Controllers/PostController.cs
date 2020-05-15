@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Factories;
 using Fishbait2.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +12,16 @@ namespace Fishbait2.Controllers
 {
     public class PostController : Controller
     {
-      //  PostDBAccesLayer postDB = new PostDBAccesLayer();
+        private IPost iPost;
+        //  PostDBAccesLayer postDB = new PostDBAccesLayer();
         private readonly IWebHostEnvironment _environment;
-        private Post refPost;
-        private PostUpdate refPostUpdate;
+       // private Post refPost;
+     //   private PostUpdate refPostUpdate;
         public PostController(IWebHostEnvironment environment)
         {
-            refPost = new Post();
-            refPostUpdate = new PostUpdate();
+            iPost = PostFactory.GetPost();
+            //refPost = new Post();
+            //refPostUpdate = new PostUpdate();
             _environment = environment;
         }
         public IActionResult Index()
@@ -168,7 +171,7 @@ namespace Fishbait2.Controllers
                     var uploads = Path.Combine(_environment.WebRootPath, "PostImages");
                     foreach (var file in post.files)
                     {
-                        realmodel.image = file.FileName;
+                        iPost.image = file.FileName;
                         if (file.Length > 0)
                         {
                             using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
@@ -177,12 +180,12 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    realmodel.id = post.id;
-                    realmodel.title = post.title;
-                    realmodel.description = post.description;
-                    realmodel.tag = post.tags.ToString();
+                    iPost.id = post.id;
+                    iPost.title = post.title;
+                    iPost.description = post.description;
+                    iPost.tag = post.tags.ToString();
 
-                    string resp = refPost.AddPost(realmodel);
+                    string resp = iPost.AddPost(iPost);
 
                 }
             }
