@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using DALFactories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fishbait2.Models
 {
-    public class PostUpdate
+    public class PostUpdate : IPostUpdate
     {
         PostDBAccesLayer postDB = new PostDBAccesLayer();
         [Key]
@@ -19,18 +20,18 @@ namespace Fishbait2.Models
 
         public string image { get; set; }
 
-        public string AddUpdatePost(PostUpdate model)
+        public string AddUpdatePost(IPostUpdate model)
         {
-            PostUpdateDto realmodel = new PostUpdateDto();
-            realmodel.id = model.id;
-            realmodel.postID = model.postID;
-            realmodel.title = model.title;
-            realmodel.description = model.description;
-            realmodel.image = model.image;
-            string resp = postDB.AddUpdatePost(realmodel);
+            IPostUpdateDto postUpdateDto = PostDBFactory.GetPost();
+            postUpdateDto.id = model.id;
+            postUpdateDto.title = model.title;
+            postUpdateDto.description = model.description;
+            postUpdateDto.image = model.image;
+            postUpdateDto.tag = model.tag;
+            string resp = postDB.AddPost(postDto);
             return (resp);
         }
-        public List<PostUpdate> GetUpdatePosts()
+        public List<IPostUpdate> GetUpdatePosts()
         {
             List<PostUpdateDto> AllPostUpdates = new List<PostUpdateDto>();
             List<PostUpdate> RealAllPostUpdates = new List<PostUpdate>();
@@ -52,5 +53,5 @@ namespace Fishbait2.Models
             postDB.DeleteUpdate(id);
         }
     }
-    
+
 }

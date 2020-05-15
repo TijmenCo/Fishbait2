@@ -13,15 +13,14 @@ namespace Fishbait2.Controllers
     public class PostController : Controller
     {
         private IPost iPost;
-        //  PostDBAccesLayer postDB = new PostDBAccesLayer();
+        private IPostUpdate iPostUpdate;
+        
         private readonly IWebHostEnvironment _environment;
-       // private Post refPost;
-     //   private PostUpdate refPostUpdate;
+     
         public PostController(IWebHostEnvironment environment)
         {
             iPost = PostFactory.GetPost();
-            //refPost = new Post();
-            //refPostUpdate = new PostUpdate();
+            iPostUpdate = PostFactory.GetPostUpdate();
             _environment = environment;
         }
         public IActionResult Index()
@@ -163,7 +162,6 @@ namespace Fishbait2.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind] PostViewModel post)
         {
-            Post realmodel = new Post();
             try
             {
                 if (ModelState.IsValid)
@@ -202,7 +200,6 @@ namespace Fishbait2.Controllers
         }
         public async Task<IActionResult> CreateUpdatePost(PostUpdateViewModel update)
         {
-            PostUpdate realupdate = new PostUpdate();
             try
             {
                 if (ModelState.IsValid)
@@ -210,7 +207,7 @@ namespace Fishbait2.Controllers
                     var uploads = Path.Combine(_environment.WebRootPath, "PostImages");
                     foreach (var file in update.files)
                     {
-                        realupdate.image = file.FileName;
+                        iPostUpdate.image = file.FileName;
                         if (file.Length > 0)
                         {
                             using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
@@ -219,11 +216,11 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    realupdate.postID = update.postID;
-                    realupdate.title = update.title;
-                    realupdate.description = update.description;
+                    iPostUpdate.postID = update.postID;
+                    iPostUpdate.title = update.title;
+                    iPostUpdate.description = update.description;
 
-                    string resp = refPostUpdate.AddUpdatePost(realupdate);
+                    string resp = iPostUpdate.AddUpdatePost(iPostUpdate);
 
                 }
             }

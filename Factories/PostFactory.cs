@@ -11,5 +11,9 @@ namespace Factories
         {
             return new Post();
         }
+        public static IPostUpdate GetPostUpdate()
+        {
+            return new PostUpdate();
+        }
     }
 }

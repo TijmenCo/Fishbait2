@@ -11,5 +11,9 @@ namespace DALFactories
         {
             return new PostDto();
         }
+        public static IPostUpdateDto GetPostUpdate()
+        {
+            return new PostUpdateDto();
+        }
     }
 }
