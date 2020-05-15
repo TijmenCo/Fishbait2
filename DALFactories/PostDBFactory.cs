@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Fishbait2.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,10 @@ namespace DALFactories
         public static IPostUpdateDto GetPostUpdate()
         {
             return new PostUpdateDto();
+        }
+        public static IPostDBAccesLayer GetPostDB()
+        {
+            return new PostDBAccesLayer();
         }
     }
 }

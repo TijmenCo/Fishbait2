@@ -20,7 +20,7 @@ namespace Fishbait2.Controllers
         public PostController(IWebHostEnvironment environment)
         {
             iPost = PostFactory.GetPost();
-            iPostUpdate = PostFactory.GetPostUpdate();
+            iPostUpdate = PostFactory.GetPostUpdate(); //Zorgt ervoor dat de methodes aangeroepen kunnen worden met de factories
             _environment = environment;
         }
         public IActionResult Index()

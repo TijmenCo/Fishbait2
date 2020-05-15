@@ -11,7 +11,7 @@ namespace Fishbait2.Models
 {
     public class Post : IPost
     {
-        private IPostDBAccesLayer postDB;
+        private IPostDBAccesLayer postDB; 
         private List<IPost> posts { get; set; }
       //  PostDBAccesLayer postDB = new PostDBAccesLayer();
 
@@ -21,9 +21,10 @@ namespace Fishbait2.Models
 
         public string image { get; set; }
         public string tag { get; set; }
-        public string AddPost(IPost model)
+        public string AddPost(IPost model) //DONE
         {
-            IPostDto postDto = PostDBFactory.GetPost();
+            postDB = PostDBFactory.GetPostDB();
+            IPostDto postDto = PostDBFactory.GetPost(); //Maakt een nieuw model aan.
             postDto.id = model.id;
             postDto.title = model.title;
             postDto.description = model.description;
@@ -32,12 +33,12 @@ namespace Fishbait2.Models
             string resp = postDB.AddPost(postDto);
             return (resp);
         }
-        public List<IPost> GetPosts()
+        public List<IPost> GetPosts() //DONE
         {
-            List<IPostDto> AllPosts = postDB.GetPosts();
+            List<IPostDto> AllPosts = postDB.GetPosts(); //Returnt alle posts van de database
             foreach (IPostDto model in AllPosts)
             {
-                posts.Add(new Post()
+                posts.Add(new Post() //Zet alle IPostDtos om in IPost
                 {
                     id = model.id,
                     title = model.title,
