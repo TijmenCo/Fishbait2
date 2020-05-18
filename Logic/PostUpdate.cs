@@ -32,10 +32,10 @@ namespace Fishbait2.Models
             string resp = postDB.AddUpdatePost(postUpdateDto);
             return (resp);
         }
-        public List<IPostUpdate> GetUpdatePosts()
+        public List<IPostUpdate> GetUpdatePosts() //DONE
         {
-            List<PostUpdateDto> AllPostUpdates = new List<PostUpdateDto>();
-            List<PostUpdate> RealAllPostUpdates = new List<PostUpdate>();
+            List<IPostUpdateDto> AllPostUpdates = new List<IPostUpdateDto>();
+            List<IPostUpdate> RealAllPostUpdates = new List<IPostUpdate>();
             AllPostUpdates = postDB.GetUpdatePosts();
             foreach (var item in AllPostUpdates)
             {
@@ -49,7 +49,7 @@ namespace Fishbait2.Models
             }
             return (RealAllPostUpdates);
         }
-        public void DeleteUpdate(int id)
+        public void DeleteUpdate(int id) //DONE
         {
             postDB.DeleteUpdate(id);
         }

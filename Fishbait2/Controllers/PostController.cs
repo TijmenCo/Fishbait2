@@ -57,9 +57,9 @@ namespace Fishbait2.Controllers
             PostViewModel realpostmodel = new PostViewModel();
             PostUpdateViewModel realupdatemodel = new PostUpdateViewModel();
 
-            List<Post> DBPosts = refPost.GetPosts();
-            List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
-            Post currentmodel = IDPosts[0];
+            List<IPost> DBPosts = iPost.GetPosts();
+            List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            IPost currentmodel = IDPosts[0];
 
             realpostmodel.id = currentmodel.id;
             realpostmodel.title = currentmodel.title;
@@ -92,7 +92,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult DeleteUpdate(int id)
         {
-            iPost.DeleteUpdate(id);
+            iPostUpdate.DeleteUpdate(id);
             return RedirectToAction("Index", "Home");
         }
         public IActionResult EditPost(int id)
@@ -111,7 +111,6 @@ namespace Fishbait2.Controllers
         }
         public async Task<IActionResult> EditPostChange(PostViewModel post)
         {
-            Post realmodel = new Post();
             try
             {
                 if (ModelState.IsValid)
@@ -121,7 +120,7 @@ namespace Fishbait2.Controllers
                         var uploads = Path.Combine(_environment.WebRootPath, "PostImages");
                         foreach (var file in post.files)
                         {
-                            realmodel.image = file.FileName;
+                            iPost.image = file.FileName;
                             if (file.Length > 0)
                             {
                                 using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
@@ -131,16 +130,16 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    realmodel.id = post.id;
-                    realmodel.title = post.title;
-                    realmodel.description = post.description;
-                    realmodel.tag = post.tag;
+                    iPost.id = post.id;
+                    iPost.title = post.title;
+                    iPost.description = post.description;
+                    iPost.tag = post.tag;
                     if (post.files == null)
                     {
-                        realmodel.image = post.image;
+                        iPost.image = post.image;
                     }
 
-                    string resp = refPost.EditPost(realmodel);
+                    string resp = iPost.EditPost(iPost);
 
                 }
             }

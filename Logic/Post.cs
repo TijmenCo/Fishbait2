@@ -54,9 +54,10 @@ namespace Fishbait2.Models
         {
             postDB.DeletePost(id);
         }
-        public string EditPost(IPost model)
+        public string EditPost(IPost model) //DONE
         {
-            PostDto realmodel = new PostDto();
+            postDB = PostDBFactory.GetPostDB();
+            IPostDto realmodel = PostDBFactory.GetPost();
             realmodel.id = model.id;
             realmodel.title = model.title;
             realmodel.description = model.description;
