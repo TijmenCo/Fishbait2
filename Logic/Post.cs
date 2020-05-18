@@ -36,6 +36,7 @@ namespace Fishbait2.Models
         public List<IPost> GetPosts() //DONE
         {
             postDB = PostDBFactory.GetPostDB();
+            posts = new List<IPost>();
             List<IPostDto> AllPosts = postDB.GetPosts(); //Returnt alle posts van de database
             foreach (IPostDto model in AllPosts)
             {

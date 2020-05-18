@@ -9,6 +9,6 @@ namespace Fishbait2.Models
     {
         public PostViewModel post { get; set; }
 
-        public List<PostUpdate> postupdate { get; set; }
+        public List<IPostUpdate> postupdate { get; set; }
     }
 }

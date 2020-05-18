@@ -67,9 +67,9 @@ namespace Fishbait2.Controllers
             realpostmodel.tag = currentmodel.tag;
             realpostmodel.image = currentmodel.image;
 
-            List<PostUpdate> DBUpdatePosts = refPostUpdate.GetUpdatePosts();
-            List<PostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
-            PostUpdate currentupdatemodel = DBUpdatePosts[0];
+            List<IPostUpdate> DBUpdatePosts = iPostUpdate.GetUpdatePosts();
+            List<IPostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
+            IPostUpdate currentupdatemodel = DBUpdatePosts[0];
 
             realupdatemodel.id = currentupdatemodel.id;
             realupdatemodel.postID = currentupdatemodel.postID;
