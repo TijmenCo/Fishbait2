@@ -19,10 +19,12 @@ namespace Fishbait2.Models
         public string description { get; set; }
 
         public string image { get; set; }
-
+        public PostUpdate()
+        {
+            postDB = PostDBFactory.GetPostDB(); //Zorgt ervoor dat er een factory wordt aangemaakt waardoor er een model wordt aangemaakt die methodes kan aangeven.
+        }
         public string AddUpdatePost(IPostUpdate model) //DONE
         {
-            postDB = PostDBFactory.GetPostDB(); //Zorgt ervoor dat er een factory wordt aangemaakt waardoor er een model wordt aangemaakt.
             IPostUpdateDto postUpdateDto = PostDBFactory.GetPostUpdate(); 
             postUpdateDto.id = model.id;
             postUpdateDto.postID = model.postID;
