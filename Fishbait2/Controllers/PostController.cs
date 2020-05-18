@@ -33,7 +33,6 @@ namespace Fishbait2.Controllers
         }
         public IActionResult Search(string result)
         {
-            
             HomeViewModel home = new HomeViewModel();
             List<IPost> events = new List<IPost>();
             events = iPost.GetPosts().Where(s => s.title.Contains(result)).ToList();
@@ -88,19 +87,19 @@ namespace Fishbait2.Controllers
         }
         public IActionResult DeletePost(int id)
         {
-            refPost.DeletePost(id);
+            iPost.DeletePost(id);
             return RedirectToAction("Index", "Home");
         }
         public IActionResult DeleteUpdate(int id)
         {
-            refPostUpdate.DeleteUpdate(id);
+            iPost.DeleteUpdate(id);
             return RedirectToAction("Index", "Home");
         }
         public IActionResult EditPost(int id)
         {
-            List<Post> DBPosts = refPost.GetPosts();
-            List<Post> IDPosts = DBPosts.Where(x => x.id == id).ToList();
-            Post model = IDPosts[0];
+            List<IPost> DBPosts = iPost.GetPosts();
+            List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            IPost model = IDPosts[0];
             PostViewModel realmodel = new PostViewModel();
             realmodel.id = model.id;
             realmodel.title = model.title;

@@ -35,6 +35,7 @@ namespace Fishbait2.Models
         }
         public List<IPost> GetPosts() //DONE
         {
+            postDB = PostDBFactory.GetPostDB();
             List<IPostDto> AllPosts = postDB.GetPosts(); //Returnt alle posts van de database
             foreach (IPostDto model in AllPosts)
             {
@@ -49,7 +50,7 @@ namespace Fishbait2.Models
             }
             return (posts);
         }
-        public void DeletePost(int id)
+        public void DeletePost(int id) //DONE
         {
             postDB.DeletePost(id);
         }

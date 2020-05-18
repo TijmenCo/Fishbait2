@@ -12,7 +12,7 @@ namespace Fishbait2.Models
     public class PostDBAccesLayer : IPostDBAccesLayer
     {
         MySqlConnection con = new MySqlConnection("Server=localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
-        public string AddPost(PostDto post)
+        public string AddPost(IPostDto post)
         {
             try
             {
@@ -32,9 +32,9 @@ namespace Fishbait2.Models
                 return (ex.Message.ToString());
             }
         }
-        public List<PostDto> GetPosts()
+        public List<IPostDto> GetPosts()
         {
-            List<PostDto> posts = new List<PostDto>();
+            List<IPostDto> posts = new List<IPostDto>();
 
             using (MySqlCommand query = new MySqlCommand("select * from post", con))
             {
@@ -83,7 +83,7 @@ namespace Fishbait2.Models
             }
             con.Close();
         }
-        public string EditPost(PostDto post)
+        public string EditPost(IPostDto post)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace Fishbait2.Models
             }
 
         }
-        public string AddUpdatePost(PostUpdateDto post)
+        public string AddUpdatePost(IPostUpdateDto post)
         {
             try
             {
@@ -124,9 +124,9 @@ namespace Fishbait2.Models
                 return (ex.Message.ToString());
             }
         }
-        public List<PostUpdateDto> GetUpdatePosts()
+        public List<IPostUpdateDto> GetUpdatePosts()
         {
-            List<PostUpdateDto> updateposts = new List<PostUpdateDto>();
+            List<IPostUpdateDto> updateposts = new List<IPostUpdateDto>();
 
             using (MySqlCommand query = new MySqlCommand("select * from updatepost", con))
             {
