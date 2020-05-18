@@ -133,7 +133,7 @@ namespace Fishbait2.Controllers
                     iPost.id = post.id;
                     iPost.title = post.title;
                     iPost.description = post.description;
-                    iPost.tag = post.tag;
+                    iPost.tag = post.tags.ToString();
                     if (post.files == null)
                     {
                         iPost.image = post.image;
