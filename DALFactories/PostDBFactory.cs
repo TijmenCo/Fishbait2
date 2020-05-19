@@ -20,9 +20,5 @@ namespace DALFactories
         {
             return new PostDBAccesLayer();
         }
-        public static IPostDBAccesLayer GetNotification()
-        {
-            return new PostDBAccesLayer();
-        }
     }
 }

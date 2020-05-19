@@ -7,6 +7,7 @@ namespace DAL.Models
 {
     public class UserDto
     {
+        [Key]
         [Required]
         public int id { get; set; }
         [Required]
