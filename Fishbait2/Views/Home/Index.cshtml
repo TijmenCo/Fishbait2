@@ -9,9 +9,9 @@
         </div>
         <div class="row">
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">       
-                        <select asp-for="tags" asp-items="@Html.GetEnumSelectList<Tags>()" class="form-control"></select>
-                        <span asp-validation-for="tags" class="text-danger"></span>
+                <div class="form-group">
+                    <select asp-for="tags" asp-items="@Html.GetEnumSelectList<Tags>()" class="form-control"></select>
+                    <span asp-validation-for="tags" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2">
@@ -29,19 +29,21 @@
 {
     <div class="container">
         <div class="row justify-content-md-center postBox">
-            <div class="col-3 bg-primary text-white postBoxImageContainer">
+            <div class="col-3 text-black-50 postBoxImageContainer">
                 <img src="~/PostImages/@item.image" alt="image" class="postBoxImage">
             </div>
-            <div class="col-7 bg-secondary text-white">
+            <div class="col-7 text-black-50">
                 <div class="postBoxText">
                     <b>@item.title</b>
                     <br />
                     @item.description
                 </div>
             </div>
-            <div class="col-2 bg-success text-white text-center">
-                <a href='@string.Format("/post/GoToPost?id={0}", item.id)' class="btn btn-primary stretched-link">View Post</a>
+            <div class="col-2 text-black-50">
+                <a href='@string.Format("/post/GoToPost?id={0}", item.id)' class="btn btn-primary text-center align-middle stretched-link">View Post</a>
             </div>
         </div>
+        <hr />
     </div>
+
 }
