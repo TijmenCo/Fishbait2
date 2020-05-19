@@ -1,6 +1,6 @@
 ﻿namespace DAL.Models
 {
-    interface INotificationDto
+    public interface INotificationDto
     {
         int accountID { get; set; }
         int id { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Logic
 {
-    interface INotification
+    public interface INotification
     {
         int accountID { get; set; }
         int id { get; set; }
