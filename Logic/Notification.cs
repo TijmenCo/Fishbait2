@@ -17,9 +17,9 @@ namespace Logic
         {
             notificationDB = NotificationDBFactory.GetNotificationDB();
         }
-        public string AddFollow(INotification model) //DONE
+        public string AddFollow(INotification model) 
         {
-            INotificationDto notificationDto = NotificationDBFactory.GetNotification(); //Maakt een nieuw model aan.
+            INotificationDto notificationDto = NotificationDBFactory.GetNotification();
             notificationDto.accountID = model.accountID;
             notificationDto.postID = model.postID;
             string resp = notificationDB.AddFollow(notificationDto);

@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Follow!</h5>
                     <p class="card-text">If you like their idea be sure to follow to get a notification when they update.</p>
-                    <a href="#" class="btn btn-primary">I'm interested!</a>
+                  <a asp-action="Follow" asp-controller="notification" asp-route-postid="@Model.post.id" asp-route-accountid="1">Follow</a>
                 </div>
             </div>
             <br />
