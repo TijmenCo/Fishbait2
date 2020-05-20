@@ -3,6 +3,7 @@
 
 <div class="container">
     <form asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-row col-md-4">
             <label for="inputTitle">Title</label>
             <input asp-for="title" type="text" class="form-control" id="" placeholder="Title">

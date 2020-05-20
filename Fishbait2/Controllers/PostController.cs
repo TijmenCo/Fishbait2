@@ -184,6 +184,9 @@ namespace Fishbait2.Controllers
                     string resp = iPost.AddPost(iPost);
 
                 }
+                else { 
+                return View("~/Views/Post/CreatePost.cshtml", post);
+                }
             }
             catch (Exception ex)
             {
