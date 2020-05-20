@@ -30,5 +30,11 @@ namespace Fishbait2.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult SendNotification()
+        {
+            List<INotification> follows = new List<INotification>();
+            follows = iNotification.GetNotifications().Where(s => s.accountID == 1).ToList();
+            return View();
+        }
     }
 }

@@ -26,13 +26,13 @@ namespace Logic
             string resp = notificationDB.AddFollow(notificationDto);
             return (resp);
         }
-        public List<INotification> GetNotifications() //DONE
+        public List<INotification> GetNotifications() 
         {
             notifications = new List<INotification>();
-            List<INotificationDto> AllNotifications = notificationDB.GetNotifications(); //Returnt alle posts van de database
+            List<INotificationDto> AllNotifications = notificationDB.GetNotifications(); 
             foreach (INotificationDto model in AllNotifications)
             {
-                notifications.Add(new Notification() //Zet alle IPostDtos om in IPost
+                notifications.Add(new Notification() 
                 {
                     id = model.id,
                     postID = model.postID,

@@ -1,4 +1,6 @@
-﻿namespace Logic
+﻿using System.Collections.Generic;
+
+namespace Logic
 {
     public interface INotification
     {
@@ -7,5 +9,6 @@
         int postID { get; set; }
 
         string AddFollow(INotification model);
+        List<INotification> GetNotifications();
     }
 }
