@@ -30,5 +30,26 @@ namespace DAL.Data
                 return (ex.Message.ToString());
             }
         }
+        public List<INotificationDto> GetNotifications()
+        {
+            List<INotificationDto> follows = new List<INotificationDto>();
+
+            using (MySqlCommand query = new MySqlCommand("select * from notification", con))
+            {
+                con.Open();
+                var reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    NotificationDto follow = new NotificationDto();
+                    follow.id = reader.GetInt32(0);
+                    follow.accountID = reader.GetInt32(1);
+                    follow.postID = reader.GetInt32(2);
+                    follows.Add(follow);
+                }
+                con.Close();
+            }
+
+            return follows;
+        }
     }
 }
