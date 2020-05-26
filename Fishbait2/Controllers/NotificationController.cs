@@ -44,7 +44,10 @@ namespace Fishbait2.Controllers
             follows = iNotification.GetNotifications().Where(s => s.postID == id).ToList();
             foreach(var notification in follows)
             {
-          //      if(notification.accountID == )
+                if(notification.accountID == 1 )
+                {
+                    //
+                }
             }
             return View();
         }

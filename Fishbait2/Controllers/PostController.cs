@@ -61,6 +61,9 @@ namespace Fishbait2.Controllers
             List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             IPost currentmodel = IDPosts[0];
 
+            //get Notifications 
+            //if userID && postID = 1 && postid 
+            //realpostmodel.registered == true
             realpostmodel.id = currentmodel.id;
             realpostmodel.title = currentmodel.title;
             realpostmodel.description = currentmodel.description;

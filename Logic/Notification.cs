@@ -15,7 +15,7 @@ namespace Logic
         public int accountID { get; set; }
         public int postID { get; set; }
         public Notification()
-        {
+        { 
             notificationDB = NotificationDBFactory.GetNotificationDB();
         }
         public string AddFollow(INotification model)

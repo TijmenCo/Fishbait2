@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicInterfaces", "Interfac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicFactories", "Factories\LogicFactories.csproj", "{B5A3E9B0-3E9B-41F4-A53C-A65E54042860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALInterfaces", "DALInterfaces\DALInterfaces.csproj", "{22C7B874-46BE-42A3-AC26-0700A646BAF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALInterfaces", "DALInterfaces\DALInterfaces.csproj", "{22C7B874-46BE-42A3-AC26-0700A646BAF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALFactories", "DALFactories\DALFactories.csproj", "{EF201DD4-6BC3-46AE-943E-3B48A72E7115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALFactories", "DALFactories\DALFactories.csproj", "{EF201DD4-6BC3-46AE-943E-3B48A72E7115}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishbaitUnitTests", "FishbaitUnitTests\FishbaitUnitTests.csproj", "{17EAAD4D-FAAD-48CC-938C-0578A52E2F8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{EF201DD4-6BC3-46AE-943E-3B48A72E7115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF201DD4-6BC3-46AE-943E-3B48A72E7115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF201DD4-6BC3-46AE-943E-3B48A72E7115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EAAD4D-FAAD-48CC-938C-0578A52E2F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EAAD4D-FAAD-48CC-938C-0578A52E2F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EAAD4D-FAAD-48CC-938C-0578A52E2F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EAAD4D-FAAD-48CC-938C-0578A52E2F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
