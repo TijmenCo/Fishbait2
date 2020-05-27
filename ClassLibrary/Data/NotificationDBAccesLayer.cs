@@ -15,11 +15,15 @@ namespace DAL.Data
             try
             {
                 con.Open();
-                string sql = "INSERT INTO notification (accountID, postID) VALUES('" + notification.accountID + "', '" + notification.postID + "');";
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return ("Data save Successfully");
+                string sql = "INSERT INTO notification (accountID, postID) VALUES (@accountID,@postID);";
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@accountID", notification.accountID);
+                    cmd.Parameters.AddWithValue("@postID", notification.postID);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return ("Data save Successfully");
+                }
             }
             catch (Exception ex)
             {
