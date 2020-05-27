@@ -31,13 +31,13 @@ namespace Fishbait2.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult GetNotifications()
+        public IActionResult GetNotifications() //WIP
         {
             List<INotification> follows = new List<INotification>();
             follows = iNotification.GetNotifications().Where(s => s.accountID == 1).ToList();
             return View();
         }
-        public IActionResult SendNotification(int id)
+        public IActionResult SendNotification(int id) //WIP
         {
             NotificationViewModel realmodel = new NotificationViewModel();
             List<INotification> follows = new List<INotification>();
