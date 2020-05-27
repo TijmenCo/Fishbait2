@@ -80,7 +80,17 @@ namespace Fishbait2.Models
             List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             return IDPosts[0];
         }
-       
+        public List<IPost> Search(string result)
+        {
+            List<IPost> SearchPosts = GetPosts().Where(s => s.title.Contains(result)).ToList();
+            return SearchPosts;
+        }
+        public List<IPost> Filter(string tag)
+        {
+            List<IPost> FilterPosts = GetPosts().Where(s => s.tag.Equals(tag)).ToList();
+            return FilterPosts;
+        }
+
 
     }
 

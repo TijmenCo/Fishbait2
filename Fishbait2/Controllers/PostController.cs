@@ -39,7 +39,7 @@ namespace Fishbait2.Controllers
         {
             HomeViewModel home = new HomeViewModel();
             List<IPost> events = new List<IPost>();
-            events = iPost.GetPosts().Where(s => s.title.Contains(result)).ToList();
+            events = iPost.Search(result);
             if (!events.Any())
             {
                 return View("~/Views/Post/ErrorPost.cshtml");
@@ -51,7 +51,7 @@ namespace Fishbait2.Controllers
         {
             List<IPost> events = new List<IPost>();
             home.tag = home.tags.ToString();
-            events = iPost.GetPosts().Where(s => s.tag.Equals(home.tag)).ToList();
+            events = iPost.Filter(home.tag);
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }
