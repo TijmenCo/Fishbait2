@@ -94,11 +94,18 @@ namespace Fishbait2.Models
             try
             {
                 con.Open();
-                string sql = "UPDATE post SET title = '" + post.title + "', description = '" + post.description + "', tag = '" + post.tag + "', image = '" + post.image + "' WHERE id= '" + post.id + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return ("Data save Successfully");
+                string sql = "UPDATE post SET title = @title, tag = @tag, image = @image Where id = @id";
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", post.id);
+                    cmd.Parameters.AddWithValue("@title", post.title);
+                    cmd.Parameters.AddWithValue("@description", post.description);
+                    cmd.Parameters.AddWithValue("@tag", post.tag);
+                    cmd.Parameters.AddWithValue("@image", post.image);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return ("Data save Successfully");
+                }
             }
             catch (Exception ex)
             {
