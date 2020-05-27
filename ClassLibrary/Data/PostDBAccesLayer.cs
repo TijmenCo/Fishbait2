@@ -17,11 +17,17 @@ namespace Fishbait2.Models
             try
             {
                 con.Open();
-                string sql = "INSERT INTO post (title, description, tag, image) VALUES('" + post.title + "', '" + post.description + "', '" + post.tag + "', '" + post.image + "');";
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return ("Data save Successfully");
+                string sql = "INSERT INTO post (title,description,tag,image) VALUES (@title,@description,@tag,@image)";
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", post.title);
+                    cmd.Parameters.AddWithValue("@description", post.description);
+                    cmd.Parameters.AddWithValue("@tag", post.tag);
+                    cmd.Parameters.AddWithValue("@image", post.image);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return ("Data save Successfully");
+                }
             }
             catch (Exception ex)
             {
