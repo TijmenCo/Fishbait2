@@ -13,6 +13,7 @@ namespace Fishbait2.Models
        string AddPost(IPost model);
        void DeletePost(int id);
        string EditPost(IPost model);
-       List<IPost> GetPosts();
+        IPost GetPostID(int id);
+        List<IPost> GetPosts();
     }
 }

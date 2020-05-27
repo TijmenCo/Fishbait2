@@ -12,6 +12,7 @@ namespace Logic
     {
         private INotificationDBAccesLayer notificationDB;
         private List<INotification> notifications { get; set; }
+        private bool followed { get; set; }
         public int id { get; set; }
         public int accountID { get; set; }
         public int postID { get; set; }
@@ -48,6 +49,19 @@ namespace Logic
             List<INotificationDto> IDNotifications = AllNotifications.Where(x => x.postID == id).ToList();
             INotificationDto currentmodel = IDNotifications[0];
             notificationDB.DeleteNotification(currentmodel.id);
+        }
+        public bool IsFollowed(int id)
+        {  
+            List<INotification> DBNotifications = GetNotifications();
+            List<INotification> IDNotifications = DBNotifications.Where(x => x.accountID == 1 && x.postID == id).ToList();
+            foreach (var notification in DBNotifications)
+            {
+                if (notification.accountID == 1 && notification.postID == id)
+                {
+                    followed = true;
+                }
+            }
+            return followed;
         }
     }
 }

@@ -68,6 +68,12 @@ namespace Fishbait2.Models
             string resp = postDB.EditPost(realmodel);
             return (resp);
         }
+        public IPost GetPostID(int id)
+        {
+            List<IPost> DBPosts = GetPosts();
+            List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            return IDPosts[0];
+        }
 
     }
 

@@ -12,6 +12,8 @@ namespace Fishbait2.Models
 
         string AddUpdatePost(IPostUpdate model);
         void DeleteUpdate(int id);
+        IPostUpdate GetUpdateID(int id);
+        List<IPostUpdate> GetUpdateIDPosts(int id);
         List<IPostUpdate> GetUpdatePosts();
     }
 }

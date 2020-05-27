@@ -61,31 +61,18 @@ namespace Fishbait2.Controllers
             PostViewModel realpostmodel = new PostViewModel();
             PostUpdateViewModel realupdatemodel = new PostUpdateViewModel();
 
-            List<IPost> DBPosts = iPost.GetPosts();
-            List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
-            IPost currentmodel = IDPosts[0];
+          
+            IPost currentmodel = iPost.GetPostID(id);
 
-            List<INotification> DBNotifications = iNotification.GetNotifications();
-            List<INotification> IDNotifications = DBNotifications.Where(x => x.accountID == 1 && x.postID == id).ToList();
-            foreach(var notification in DBNotifications)
-            {
-                if(notification.accountID == 1 && notification.postID == id)
-                {
-                    realpostmodel.registered = true;
-                }
-            }
-            //get Notifications 
-            //if userID && postID = 1 && postid 
-            //realpostmodel.registered == true
+            realpostmodel.registered = iNotification.IsFollowed(id);
             realpostmodel.id = currentmodel.id;
             realpostmodel.title = currentmodel.title;
             realpostmodel.description = currentmodel.description;
             realpostmodel.tag = currentmodel.tag;
             realpostmodel.image = currentmodel.image;
 
-            List<IPostUpdate> DBUpdatePosts = iPostUpdate.GetUpdatePosts();
-            List<IPostUpdate> IDUpdatePosts = DBUpdatePosts.Where(x => x.postID == id).ToList();
-            IPostUpdate currentupdatemodel = DBUpdatePosts[0];
+
+            IPostUpdate currentupdatemodel = iPostUpdate.GetUpdateID(id);
 
             realupdatemodel.id = currentupdatemodel.id;
             realupdatemodel.postID = currentupdatemodel.postID;
@@ -97,7 +84,7 @@ namespace Fishbait2.Controllers
             RealUpdateList.Add(realupdatemodel);
 
 
-            realmodel.postupdate = IDUpdatePosts;
+            realmodel.postupdate = iPostUpdate.GetUpdateIDPosts(id);
             realmodel.post = realpostmodel;
             return View("~/Views/Post/ViewPost.cshtml", realmodel);
         }

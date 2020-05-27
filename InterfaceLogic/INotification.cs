@@ -11,5 +11,6 @@ namespace Logic
         string AddFollow(INotification model);
         void DeleteNotification(int id);
         List<INotification> GetNotifications();
+        bool IsFollowed(int id);
     }
 }

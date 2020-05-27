@@ -165,7 +165,7 @@ namespace Fishbait2.Models
                     updateposts.Add(post);
                 }
             }
-
+            con.Close();
             return updateposts;
         }
 
