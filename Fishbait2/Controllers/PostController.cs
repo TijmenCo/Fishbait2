@@ -101,9 +101,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult EditPost(int id)
         {
-            List<IPost> DBPosts = iPost.GetPosts();
-            List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
-            IPost model = IDPosts[0];
+            IPost model = iPost.GetEditID(id);
             PostViewModel realmodel = new PostViewModel();
             realmodel.id = model.id;
             realmodel.title = model.title;

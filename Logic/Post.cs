@@ -11,9 +11,9 @@ namespace Fishbait2.Models
 {
     public class Post : IPost
     {
-        private IPostDBAccesLayer postDB; 
+        private IPostDBAccesLayer postDB;
         private List<IPost> posts { get; set; }
-      //  PostDBAccesLayer postDB = new PostDBAccesLayer();
+        //  PostDBAccesLayer postDB = new PostDBAccesLayer();
 
         public int id { get; set; }
         public string title { get; set; }
@@ -74,6 +74,13 @@ namespace Fishbait2.Models
             List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             return IDPosts[0];
         }
+        public IPost GetEditID(int id)
+        {
+            List<IPost> DBPosts = GetPosts();
+            List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
+            return IDPosts[0];
+        }
+       
 
     }
 
