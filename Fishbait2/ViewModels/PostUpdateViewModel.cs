@@ -17,7 +17,6 @@ namespace Fishbait2.Models
         public string description { get; set; }
 
         public string image { get; set; }
-        public bool registered { get; set; }
         public ICollection<IFormFile> files { get; set; }
     }
 }

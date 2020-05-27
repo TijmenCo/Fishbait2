@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Factories;
 using Fishbait2.Models;
+using Logic;
+using LogicFactories;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,11 +16,13 @@ namespace Fishbait2.Controllers
     {
         private IPost iPost;
         private IPostUpdate iPostUpdate;
-        
+        private INotification iNotification;
+
         private readonly IWebHostEnvironment _environment;
      
         public PostController(IWebHostEnvironment environment)
         {
+            iNotification = NotificationFactory.GetNotification();
             iPost = PostFactory.GetPost();
             iPostUpdate = PostFactory.GetPostUpdate(); //Zorgt ervoor dat de methodes aangeroepen kunnen worden met de factories
             _environment = environment;
@@ -61,6 +65,15 @@ namespace Fishbait2.Controllers
             List<IPost> IDPosts = DBPosts.Where(x => x.id == id).ToList();
             IPost currentmodel = IDPosts[0];
 
+            List<INotification> DBNotifications = iNotification.GetNotifications();
+            List<INotification> IDNotifications = DBNotifications.Where(x => x.accountID == 1 && x.postID == id).ToList();
+            foreach(var notification in DBNotifications)
+            {
+                if(notification.accountID == 1 && notification.postID == id)
+                {
+                    realpostmodel.registered = true;
+                }
+            }
             //get Notifications 
             //if userID && postID = 1 && postid 
             //realpostmodel.registered == true
@@ -90,6 +103,7 @@ namespace Fishbait2.Controllers
         }
         public IActionResult DeletePost(int id)
         {
+            iNotification.DeleteNotification(id);
             iPost.DeletePost(id);
             return RedirectToAction("Index", "Home");
         }

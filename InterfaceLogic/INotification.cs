@@ -9,6 +9,7 @@ namespace Logic
         int postID { get; set; }
 
         string AddFollow(INotification model);
+        void DeleteNotification(int id);
         List<INotification> GetNotifications();
     }
 }

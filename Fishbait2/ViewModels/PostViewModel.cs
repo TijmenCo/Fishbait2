@@ -21,5 +21,6 @@ namespace Fishbait2.Models
 
         public ICollection<IFormFile> files { get; set; }
         public Tags tags { get; set; }
+        public bool registered { get; set; }
     }
 }
