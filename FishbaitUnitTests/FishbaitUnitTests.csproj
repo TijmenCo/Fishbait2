@@ -62,11 +62,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="LogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DALFactories\DALFactories.csproj">
+      <Project>{EF201DD4-6BC3-46AE-943E-3B48A72E7115}</Project>
+      <Name>DALFactories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALInterfaces\DALInterfaces.csproj">
+      <Project>{22C7B874-46BE-42A3-AC26-0700A646BAF3}</Project>
+      <Name>DALInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Factories\LogicFactories.csproj">
+      <Project>{B5A3E9B0-3E9B-41F4-A53C-A65E54042860}</Project>
+      <Name>LogicFactories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceLogic\LogicInterfaces.csproj">
+      <Project>{7A3F8F2E-A620-46F5-83CD-FF3F94E26C07}</Project>
+      <Name>LogicInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
