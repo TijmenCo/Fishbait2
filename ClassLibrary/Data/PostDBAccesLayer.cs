@@ -1,5 +1,6 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
 using DAL.Models;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,13 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace Fishbait2.Models
 {
     public class PostDBAccesLayer : IPostDBAccesLayer
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
+
+        MySqlConnection con = new MySqlConnection("Server = localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
         public string AddPost(IPostDto post)
         {
             try
@@ -25,17 +28,16 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@tag", post.tag);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    con.Close();
                     return ("Data save Successfully");
                 }
             }
             catch (Exception ex)
             {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
                 return (ex.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
             }
         }
         public List<IPostDto> GetPosts()
@@ -103,17 +105,16 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@tag", post.tag);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    con.Close();
                     return ("Data save Successfully");
                 }
             }
             catch (Exception ex)
             {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
                 return (ex.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
             }
 
         }
@@ -130,17 +131,16 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@description", post.description);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    con.Close();
                     return ("Data save Successfully");
                 }
             }
             catch (Exception ex)
             {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
                 return (ex.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
             }
         }
         public List<IPostUpdateDto> GetUpdatePosts()

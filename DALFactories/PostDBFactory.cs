@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using Fishbait2.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -21,17 +21,16 @@ namespace DAL.Data
                     cmd.Parameters.AddWithValue("@accountID", notification.accountID);
                     cmd.Parameters.AddWithValue("@postID", notification.postID);
                     cmd.ExecuteNonQuery();
-                    con.Close();
                     return ("Data save Successfully");
                 }
             }
             catch (Exception ex)
             {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
                 return (ex.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
             }
         }
         public List<INotificationDto> GetNotifications()
