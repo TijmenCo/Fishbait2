@@ -15,9 +15,5 @@ namespace Factories
         {
             return new PostUpdate();
         }
-        public static IPostUpdate GetNotification()
-        {
-            return new PostUpdate();
-        }
     }
 }
