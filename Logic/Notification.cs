@@ -45,10 +45,13 @@ namespace Logic
         }
         public void DeleteNotification(int id, bool registered)
         {
-            List<INotificationDto> AllNotifications = notificationDB.GetNotifications();
-            List<INotificationDto> IDNotifications = AllNotifications.Where(x => x.postID == id).ToList();
-            INotificationDto currentmodel = IDNotifications[0];
-            notificationDB.DeleteNotification(currentmodel.id);
+            if (registered == true)
+            {
+                List<INotificationDto> AllNotifications = notificationDB.GetNotifications();
+                List<INotificationDto> IDNotifications = AllNotifications.Where(x => x.postID == id).ToList();
+                INotificationDto currentmodel = IDNotifications[0];
+                notificationDB.DeleteNotification(currentmodel.id);
+            }
         }
         public bool IsFollowed(int id)
         {  
