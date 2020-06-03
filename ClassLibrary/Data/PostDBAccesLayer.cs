@@ -70,16 +70,28 @@ namespace Fishbait2.Models
 
             return posts;
         }
-        public void DeletePost(int id)
+        public string DeletePost(int id)
         {
-            using (MySqlCommand query = new MySqlCommand("DELETE FROM post WHERE id=@id", con))
+            try
             {
-                MySqlParameter param = new MySqlParameter("@id", id);
-                query.Parameters.Add(param);
-                con.Open();
-                var reader = query.ExecuteReader();
+                using (MySqlCommand query = new MySqlCommand("DELETE FROM post WHERE id=@id", con))
+                {
+                    MySqlParameter param = new MySqlParameter("@id", id);
+                    query.Parameters.Add(param);
+                    con.Open();
+                    var reader = query.ExecuteReader();
+                    return ("Data deletion Succes");
+                }
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                return ("Data deletion Fail");
+                // return (ex.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
         }
         public void DeleteUpdate(int id)
         {

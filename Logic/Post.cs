@@ -53,9 +53,10 @@ namespace Fishbait2.Models
             }
             return (posts);
         }
-        public void DeletePost(int id) //DONE
+        public string DeletePost(int id) //DONE
         {
-            postDB.DeletePost(id);
+            string resp = postDB.DeletePost(id);
+            return (resp);
         }
         public string EditPost(IPost model) //DONE
         {

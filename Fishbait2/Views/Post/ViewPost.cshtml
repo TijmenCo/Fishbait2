@@ -33,7 +33,7 @@
             <br />
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <a href='@string.Format("/post/DeletePost?id={0}", Model.post.id)' class="btn btn-danger">Delete Post</a>
+                    <input type="button" value="@Model.post.id" onclick="@("window.location.href='" + @Url.Action("DeletePost", "PostController") + "'");" />
                     <br />
                     <br />
                     <a href='@string.Format("/post/EditPost?id={0}", Model.post.id)' class="btn btn-success">Edit Post</a>
