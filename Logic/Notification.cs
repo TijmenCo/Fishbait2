@@ -43,7 +43,7 @@ namespace Logic
             }
             return (notifications);
         }
-        public void DeleteNotification(int id)
+        public void DeleteNotification(int id, bool registered)
         {
             List<INotificationDto> AllNotifications = notificationDB.GetNotifications();
             List<INotificationDto> IDNotifications = AllNotifications.Where(x => x.postID == id).ToList();

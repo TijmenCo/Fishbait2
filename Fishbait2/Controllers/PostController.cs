@@ -88,9 +88,9 @@ namespace Fishbait2.Controllers
             realmodel.post = realpostmodel;
             return View("~/Views/Post/ViewPost.cshtml", realmodel);
         }
-        public IActionResult DeletePost(int id)
+        public IActionResult DeletePost(int id, bool registered)
         {
-            iNotification.DeleteNotification(id);
+            iNotification.DeleteNotification(id, registered);
             iPost.DeletePost(id);
             return RedirectToAction("Index", "Home");
         }
