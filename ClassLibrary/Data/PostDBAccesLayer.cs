@@ -33,7 +33,8 @@ namespace Fishbait2.Models
             }
             catch (Exception ex)
             {
-                return (ex.Message.ToString());
+                return ("Data save Failed");
+               // return (ex.Message.ToString());
             }
             finally
             {
