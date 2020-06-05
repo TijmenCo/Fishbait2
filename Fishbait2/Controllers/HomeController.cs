@@ -10,15 +10,15 @@ namespace Fishbait2.Controllers
 {
     public class HomeController : Controller
     {
-        private Post refPost;
-        public HomeController()
+        private readonly IPost refPost;
+       // private Post refPost;
+        public HomeController(IPost post)
         {
-            refPost = new Post();
+            refPost = post;
         }
         public IActionResult Index()
         {
-            Post post = new Post();
-            var posts = post.GetPosts();
+            var posts = refPost.GetPosts();
             HomeViewModel home = new HomeViewModel();
             home.Posts = posts;
             return View(home);
