@@ -16,16 +16,16 @@ namespace Fishbait2.Controllers
     {
         private readonly IPost iPost;
         //private IPost iPost;
-        private IPostUpdate iPostUpdate;
-        private INotification iNotification;
+        private readonly IPostUpdate iPostUpdate;
+        private readonly INotification iNotification;
 
         private readonly IWebHostEnvironment _environment;
      
-        public PostController(IWebHostEnvironment environment, IPost post)
+        public PostController(IWebHostEnvironment environment, IPost post, IPostUpdate postupdate, INotification notification)
         {
-            iNotification = NotificationFactory.GetNotification();
+            iNotification = notification;
             iPost = post;
-            iPostUpdate = PostFactory.GetPostUpdate(); //Zorgt ervoor dat de methodes aangeroepen kunnen worden met de factories
+            iPostUpdate = postupdate; //Zorgt ervoor dat de methodes aangeroepen kunnen worden met de factories
             _environment = environment;
         }
         public IActionResult Index()

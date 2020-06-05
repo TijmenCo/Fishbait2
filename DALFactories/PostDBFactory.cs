@@ -9,6 +9,7 @@ namespace DALFactories
 {
     public static class PostDBFactory
     {
+
         public static IPostDto GetPost()
         {
             return new PostDto();

@@ -12,8 +12,7 @@ namespace Fishbait2.Models
 {
     public class Post : IPost
     {
-        private readonly IPostDBAccesLayer dependancy;
-        private IPostDBAccesLayer postDB;
+        private readonly IPostDBAccesLayer postDB;
         private List<IPost> posts { get; set; }
         //  PostDBAccesLayer postDB = new PostDBAccesLayer();
 
@@ -25,8 +24,7 @@ namespace Fishbait2.Models
         public string tag { get; set; }
         public Post(IPostDBAccesLayer _dependancy)
         {
-            dependancy = _dependancy;
-            postDB = PostDBFactory.GetPostDB();
+            postDB = _dependancy;
         }
         public string AddPost(IPost model) //DONE
         {
@@ -36,16 +34,16 @@ namespace Fishbait2.Models
             postDto.description = model.description;
             postDto.image = model.image;
             postDto.tag = model.tag;
-            string resp = dependancy.AddPost(postDto);
+            string resp = postDB.AddPost(postDto);
             return (resp);
         }
         public List<IPost> GetPosts() //DONE
         {
             posts = new List<IPost>();
-            List<IPostDto> AllPosts = dependancy.GetPosts(); //Returnt alle posts van de database
+            List<IPostDto> AllPosts = postDB.GetPosts(); //Returnt alle posts van de database
             foreach (IPostDto model in AllPosts)
             {
-                posts.Add(new Post(dependancy) //Zet alle IPostDtos om in IPost
+                posts.Add(new Post(postDB) //Zet alle IPostDtos om in IPost
                 {
                     id = model.id,
                     title = model.title,

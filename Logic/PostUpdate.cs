@@ -10,7 +10,7 @@ namespace Fishbait2.Models
 {
     public class PostUpdate : IPostUpdate
     {
-        private IPostDBAccesLayer postDB;
+        private readonly IPostDBAccesLayer postDB;
         [Key]
         public int id { get; set; }
         public int postID { get; set; }
@@ -19,9 +19,9 @@ namespace Fishbait2.Models
         public string description { get; set; }
 
         public string image { get; set; }
-        public PostUpdate()
+        public PostUpdate(IPostDBAccesLayer _dependancy)
         {
-            postDB = PostDBFactory.GetPostDB(); //Zorgt ervoor dat er een factory wordt aangemaakt waardoor er een model wordt aangemaakt die methodes kan aangeven.
+            postDB = _dependancy; //Zorgt ervoor dat er een factory wordt aangemaakt waardoor er een model wordt aangemaakt die methodes kan aangeven.
         }
         public string AddUpdatePost(IPostUpdate model) //DONE
         {
@@ -41,7 +41,7 @@ namespace Fishbait2.Models
             AllPostUpdates = postDB.GetUpdatePosts();
             foreach (var item in AllPostUpdates)
             {
-                PostUpdate post = new PostUpdate();
+                PostUpdate post = new PostUpdate(postDB);
                 post.id = item.id;
                 post.postID = item.postID;
                 post.title = item.title;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Fishbait2.Models;
+using Logic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -23,6 +24,8 @@ namespace Fishbait2
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddScoped<IPostDBAccesLayer, PostDBAccesLayer>();
             services.AddScoped<IPost, Post>();
+            services.AddScoped<IPostUpdate, PostUpdate>();
+            services.AddScoped<INotification, Notification>();
             services.AddMvc();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }

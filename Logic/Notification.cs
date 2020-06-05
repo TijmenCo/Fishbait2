@@ -10,15 +10,15 @@ namespace Logic
 {
     public class Notification : INotification
     {
-        private INotificationDBAccesLayer notificationDB;
+        private readonly INotificationDBAccesLayer notificationDB;
         private List<INotification> notifications { get; set; }
         private bool followed { get; set; }
         public int id { get; set; }
         public int accountID { get; set; }
         public int postID { get; set; }
-        public Notification()
-        { 
-            notificationDB = NotificationDBFactory.GetNotificationDB();
+        public Notification(INotificationDBAccesLayer _dependancy)
+        {
+            notificationDB = _dependancy;
         }
         public string AddFollow(INotification model)
         {
@@ -34,7 +34,7 @@ namespace Logic
             List<INotificationDto> AllNotifications = notificationDB.GetNotifications(); 
             foreach (INotificationDto model in AllNotifications)
             {
-                notifications.Add(new Notification() 
+                notifications.Add(new Notification(notificationDB) 
                 {
                     id = model.id,
                     postID = model.postID,
