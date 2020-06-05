@@ -12,10 +12,10 @@ namespace Fishbait2.Controllers
 {
     public class NotificationController : Controller
     {
-        private INotification iNotification;
-        public NotificationController()
+        private readonly INotification iNotification;
+        public NotificationController(INotification _dependancy)
         {
-            iNotification = NotificationFactory.GetNotification();
+            iNotification = _dependancy;
         }
         public IActionResult Follow(int postid, int accountid)
         {

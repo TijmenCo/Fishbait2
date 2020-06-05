@@ -7,9 +7,9 @@ namespace LogicFactories
 {
     public static class NotificationFactory
     {
-        public static INotification GetNotification()
-        {
-            return new Notification();
-        }
+     //   public static INotification GetNotification()
+    //    {
+     //       return new Notification();
+    //    }
     }
 }
