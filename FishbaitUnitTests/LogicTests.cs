@@ -23,10 +23,12 @@ namespace FishbaitUnitTests
         [TestMethod]
         public void AddPost_AddAPost_ReturnsDataSaveSuccessfully()
         {
-            var mock = new Mock<IPost>();
-            mock.Setup(m => m.AddPost(mock.Object)).Returns("Data save Successfully");
+            /*
+            var dalMock = new Mock<IPostDBAccesLayer>();
+            var postMock = new Mock<IPostDBAccesLayer>();
+            dalMock.Setup(m => m.AddPost(It.IsAny<IPostDto>())).Returns("Data save succesfull");
             //Configure Mocks
-            mock.Setup(m => m.title).Returns("lepel");
+            mock.Setup(m => m.title).Returns("Lepel");
             mock.Setup(m => m.description).Returns("Nieuwe soort lepel");
             mock.Setup(m => m.image).Returns("lepel.png");
             mock.Setup(m => m.tag).Returns("Tech");
@@ -40,7 +42,7 @@ namespace FishbaitUnitTests
 
             // Verify that the mock was invoked
             //    mock.VerifyGet(x => x.title);
-
+            */
         }
         [TestMethod]
         public void AddPost_AddAPostWithTitleOver50Chars_ReturnsDataSaveFailed()
@@ -49,7 +51,7 @@ namespace FishbaitUnitTests
             var mock = new Mock<IPost>();
             mock.Setup(m => m.AddPost(mock.Object)).Returns("Data save Failed");
             //Configure Mocks
-            mock.Setup(m => m.title).Returns("abcdefghijklmnopqrstuvwxzyabcdefghijklmnopqrstuvwxzyabcdefghijklmnopqrstuvwxzy");
+            mock.Setup(m => m.title).Returns("");
             mock.Setup(m => m.description).Returns("Nieuwe soort lepel");
             mock.Setup(m => m.image).Returns("lepel.png");
             mock.Setup(m => m.tag).Returns("Tech");
@@ -62,19 +64,15 @@ namespace FishbaitUnitTests
         [TestMethod]
         public void GetPosts_PostsGetSavedFromDB_ReturnsTrue()
         {
+            List<IPostDto> postsDto = new List<IPostDto>();
             iPost = PostFactory.GetPost();
-            var posts = new List<IPost>();
-           // var mock = new Mock<IPost>();
-           // mock.Setup(m => m.GetPosts()).Returns(posts);
-          
-            //Save Result
-            posts = iPost.GetPosts();
-            if(posts.Any())
-            {
-                exists = true;
-            }
+            List<IPostDto> posts = GivePosts();
+            var dalMock = new Mock<IPostDBAccesLayer>();
+            dalMock.Setup(m => m.GetPosts()).Returns(posts);
+            var gottenPosts = iPost.GetPosts();
+           
             //Check if GetPosts went succesfully
-            Assert.AreEqual(exists, true);
+            Assert.AreEqual(gottenPosts.Count(), posts.Count());
         }
         [TestMethod]
         public void DeletePost_PostGetsDeleted_ReturnsTrue()
@@ -89,6 +87,35 @@ namespace FishbaitUnitTests
 
             //Check if GetPosts went succesfully
             //Assert.AreEqual(exists, true);
+        }
+        public List<IPostDto> GivePosts()
+        {
+            IPostDto[] postDto = new IPostDto[3];
+            List<IPostDto> posts = new List<IPostDto>();
+            for (int i = 0; i < 3; i++)
+            {
+                postDto[i] = PostDBFactory.GetPost();
+             }
+            postDto[0].title = "Help";
+            postDto[0].description = "Beschrijving";
+            postDto[0].image = "foto.png";
+            postDto[0].tag = "Tech";
+            posts.Add(postDto[0]);
+
+           
+            postDto[1].title = "Help";
+            postDto[1].description = "Beschrijving";
+            postDto[1].image = "foto.png";
+            postDto[1].tag = "Tech";
+            posts.Add(postDto[1]);
+
+            postDto[2].title = "Help";
+            postDto[2].description = "Beschrijving";
+            postDto[2].image = "foto.png";
+            postDto[2].tag = "Tech";
+            posts.Add(postDto[2]);
+            return posts;
+
         }
     }
 }
