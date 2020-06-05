@@ -11,6 +11,7 @@ namespace Fishbait2.Models
 {
     public class Post : IPost
     {
+
         private IPostDBAccesLayer postDB;
         private List<IPost> posts { get; set; }
         //  PostDBAccesLayer postDB = new PostDBAccesLayer();
