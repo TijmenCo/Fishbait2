@@ -85,6 +85,10 @@
       <Project>{7A3F8F2E-A620-46F5-83CD-FF3F94E26C07}</Project>
       <Name>LogicInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{fc92c05a-43b5-4f9f-9a70-6ad203a3e5aa}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

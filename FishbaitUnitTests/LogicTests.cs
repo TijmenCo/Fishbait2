@@ -15,6 +15,7 @@ namespace FishbaitUnitTests
     {
         public bool exists;
         private IPost iPost;
+        private IPostDBAccesLayer postDB;
 
         [TestInitialize]
         public void TestInitialize()
@@ -65,11 +66,11 @@ namespace FishbaitUnitTests
         public void GetPosts_PostsGetSavedFromDB_ReturnsTrue()
         {
             List<IPostDto> postsDto = new List<IPostDto>();
-            iPost = PostFactory.GetPost();
             List<IPostDto> posts = GivePosts();
             var dalMock = new Mock<IPostDBAccesLayer>();
             dalMock.Setup(m => m.GetPosts()).Returns(posts);
-            var gottenPosts = iPost.GetPosts();
+            var epic = new Post(dalMock.Object);
+            var gottenPosts = epic.GetPosts();
            
             //Check if GetPosts went succesfully
             Assert.AreEqual(gottenPosts.Count(), posts.Count());
@@ -77,7 +78,6 @@ namespace FishbaitUnitTests
         [TestMethod]
         public void DeletePost_PostGetsDeleted_ReturnsTrue()
         {
-            iPost = PostFactory.GetPost();
             var mock = new Mock<IPost>();
             mock.Setup(m => m.DeletePost(mock.Object.id)).Returns("Data deletion Succes");
             mock.Setup(m => m.id).Returns(16);
