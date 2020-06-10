@@ -14,9 +14,7 @@ namespace FishbaitUnitTests
     public class LogicTests
     {
         public bool exists;
-        private IPost iPost;
-        private IPostDBAccesLayer postDB;
-
+      
         [TestInitialize]
         public void TestInitialize()
         {
@@ -72,8 +70,41 @@ namespace FishbaitUnitTests
             var result = post.GetPostID(3);
             Assert.AreEqual(result.id, resultID[0].id);
         }
+        [TestMethod]
+        public void GetEditID_PostEditGetCorrectlyWithID_ReturnsTrue()
+        {
+            List<IPostDto> posts = GivePostsDto();
+            var mock = new Mock<IPostDBAccesLayer>();
+            mock.Setup(m => m.GetPosts()).Returns(posts);
+            var post = new Post(mock.Object);
+            var inputresultID = posts.Where(x => x.id == 2).ToList();
+            var resultID = post.GetEditID(2);
+            Assert.AreEqual(resultID.id, inputresultID[0].id);
+        }
+        [TestMethod]
+        public void Search_GetPostCorrectlyWithSearch_ReturnsTrue()
+        {
+            List<IPostDto> posts = GivePostsDto();
+            var mock = new Mock<IPostDBAccesLayer>();
+            mock.Setup(m => m.GetPosts()).Returns(posts);
+            var post = new Post(mock.Object);
+            var inputresultID = posts.Where(x => x.title == "Nieuwe Auto!").ToList();
+            var resultID = post.Search("Auto");
+            Assert.AreEqual(resultID[0].id, inputresultID[0].id);
+        }
+        [TestMethod]
+        public void Filter_FilterPostsCorrectlyWithRightTag_ReturnsTrue()
+        {
+            List<IPostDto> posts = GivePostsDto();
+            var mock = new Mock<IPostDBAccesLayer>();
+            mock.Setup(m => m.GetPosts()).Returns(posts);
+            var post = new Post(mock.Object);
+            var inputresultCount = posts.Where(x => x.tag == "Tech").Count();
+            var resultCount = post.Filter("Tech").Count();
+            Assert.AreEqual(resultCount, inputresultCount);
+        }
 
-            public List<IPostDto> GivePostsDto()
+        public List<IPostDto> GivePostsDto()
         {
             IPostDto[] postDto = new IPostDto[3];
             List<IPostDto> posts = new List<IPostDto>();
