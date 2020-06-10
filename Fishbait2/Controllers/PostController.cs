@@ -73,7 +73,7 @@ namespace Fishbait2.Controllers
             realpostmodel.image = currentmodel.image;
 
 
-            IPostUpdate currentupdatemodel = iPostUpdate.GetUpdateID(id)[0];
+            IPostUpdate currentupdatemodel = iPostUpdate.GetUpdateIDPosts(id)[0];
 
             realupdatemodel.id = currentupdatemodel.id;
             realupdatemodel.postID = currentupdatemodel.postID;

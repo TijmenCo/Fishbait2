@@ -13,7 +13,6 @@ namespace Fishbait2.Models
     public class Post : IPost
     {
         private readonly IPostDBAccesLayer postDB;
-        private readonly IPost post;
         private List<IPost> posts { get; set; }
         //  PostDBAccesLayer postDB = new PostDBAccesLayer();
 

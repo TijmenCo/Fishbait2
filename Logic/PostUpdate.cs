@@ -55,11 +55,7 @@ namespace Fishbait2.Models
         {
             postDB.DeleteUpdate(id);
         }
-        public List<IPostUpdate> GetUpdateID(int id)
-        {
-            List<IPostUpdate> DBUpdatePosts = GetUpdatePosts();
-            return DBUpdatePosts;
-        }
+ 
         public List<IPostUpdate> GetUpdateIDPosts(int id)
         {
             List<IPostUpdate> DBUpdatePosts = GetUpdatePosts();

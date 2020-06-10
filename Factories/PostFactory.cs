@@ -13,9 +13,9 @@ namespace Factories
             return new Post(PostDBFactory.GetPostDB());
         }
 
-    //    public static IPostUpdate GetPostUpdate()
-    //    {
-    //        return new PostUpdate();
-    //    }
+       public static IPostUpdate GetPostUpdate()
+        {
+            return new PostUpdate(PostDBFactory.GetPostDB());
+        }
     }
 }
