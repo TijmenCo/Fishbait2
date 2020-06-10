@@ -13,6 +13,7 @@ namespace Fishbait2.Models
     public class Post : IPost
     {
         private readonly IPostDBAccesLayer postDB;
+        private readonly IPost post;
         private List<IPost> posts { get; set; }
         //  PostDBAccesLayer postDB = new PostDBAccesLayer();
 
@@ -22,9 +23,9 @@ namespace Fishbait2.Models
 
         public string image { get; set; }
         public string tag { get; set; }
-        public Post(IPostDBAccesLayer _dependancy)
+        public Post(IPostDBAccesLayer _dependencyDB)
         {
-            postDB = _dependancy;
+            postDB = _dependencyDB;
         }
         public string AddPost(IPost model) //DONE
         {
