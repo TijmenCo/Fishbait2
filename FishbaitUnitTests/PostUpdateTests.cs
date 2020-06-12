@@ -19,7 +19,7 @@ namespace FishbaitUnitTests
         {
         }
         [TestMethod]
-        public void GetUpdatePosts_UpdatePostsGetCorrectlySavedFromDB_ReturnsTrue()
+        public void GetUpdatePosts_UpdatePostsGetCorrectlySavedFromDB_Returns3()
         {
             List<IPostUpdateDto> postsDto = new List<IPostUpdateDto>();
             List<IPostUpdateDto> posts = GiveUpdatePostsDto();
@@ -28,11 +28,11 @@ namespace FishbaitUnitTests
             var postupdate = new PostUpdate(dalMock.Object);
             var gottenPosts = postupdate.GetUpdatePosts();
 
-            //Check if GetUpdatesPosts went succesfully
+            //Check if GetUpdatesPosts gets the same amount of PostUpdates
             Assert.AreEqual(gottenPosts.Count(), posts.Count());
         }
         [TestMethod]
-        public void GetUpdateIDPosts_UpdatePostsGetCorrectlyByPostIDFromDB_ReturnsTrue()
+        public void GetUpdateIDPosts_UpdatePostsGetCorrectlyByPostIDFromDB_Returns7()
         {
             List<IPostUpdateDto> posts = GiveUpdatePostsDto();
             var mock = new Mock<IPostDBAccesLayer>();
