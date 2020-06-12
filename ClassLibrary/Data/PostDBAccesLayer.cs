@@ -116,7 +116,7 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@tag", post.tag);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    return ("Data save Successfully");
+                    return ("Data save successful");
                 }
             }
             catch (Exception ex)
@@ -142,7 +142,7 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@description", post.description);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    return ("Data save Successfully");
+                    return ("Data save successful");
                 }
             }
             catch (Exception ex)

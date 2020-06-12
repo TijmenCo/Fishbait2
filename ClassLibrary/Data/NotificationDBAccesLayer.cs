@@ -21,7 +21,7 @@ namespace DAL.Data
                     cmd.Parameters.AddWithValue("@accountID", notification.accountID);
                     cmd.Parameters.AddWithValue("@postID", notification.postID);
                     cmd.ExecuteNonQuery();
-                    return ("Data save Successfully");
+                    return ("Data save successful");
                 }
             }
             catch (Exception ex)
