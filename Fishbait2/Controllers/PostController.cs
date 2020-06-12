@@ -15,7 +15,6 @@ namespace Fishbait2.Controllers
     public class PostController : Controller
     {
         private readonly IPost iPost;
-        //private IPost iPost;
         private readonly IPostUpdate iPostUpdate;
         private readonly INotification iNotification;
 
@@ -25,7 +24,7 @@ namespace Fishbait2.Controllers
         {
             iNotification = notification;
             iPost = post;
-            iPostUpdate = postupdate; //Zorgt ervoor dat de methodes aangeroepen kunnen worden met de factories
+            iPostUpdate = postupdate; 
             _environment = environment;
         }
         public IActionResult Index()
@@ -41,10 +40,12 @@ namespace Fishbait2.Controllers
             HomeViewModel home = new HomeViewModel();
             List<IPost> events = new List<IPost>();
             events = iPost.Search(result);
+
             if (!events.Any())
             {
-                return View("~/Views/Post/ErrorPost.cshtml");
+                return View("~/Views/Post/ErrorPost.cshtml", home);
             }
+
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }
@@ -53,6 +54,12 @@ namespace Fishbait2.Controllers
             List<IPost> events = new List<IPost>();
             home.tag = home.tags.ToString();
             events = iPost.Filter(home.tag);
+
+            if (!events.Any())
+            {
+                return View("~/Views/Post/ErrorPost.cshtml", home);
+            }
+
             home.Posts = events;
             return View("~/Views/Home/Index.cshtml", home);
         }
@@ -72,8 +79,8 @@ namespace Fishbait2.Controllers
             realpostmodel.tag = currentmodel.tag;
             realpostmodel.image = currentmodel.image;
 
-
-            IPostUpdate currentupdatemodel = iPostUpdate.GetUpdateIDPosts(id)[0];
+            /*
+            IPostUpdate currentupdatemodel = iPostUpdate.GetUpdateIDPosts(id);
 
             realupdatemodel.id = currentupdatemodel.id;
             realupdatemodel.postID = currentupdatemodel.postID;
@@ -83,6 +90,7 @@ namespace Fishbait2.Controllers
 
             List<PostUpdateViewModel> RealUpdateList = new List<PostUpdateViewModel>();
             RealUpdateList.Add(realupdatemodel);
+            */
 
 
             realmodel.postupdate = iPostUpdate.GetUpdateIDPosts(id);
@@ -134,7 +142,7 @@ namespace Fishbait2.Controllers
                         }
                     }
                     iPost.id = post.id;
-                    iPost.title = post.title;
+                  //  iPost.title = post.title;
                     iPost.description = post.description;
                     iPost.tag = post.tags.ToString();
                     if (post.files == null)

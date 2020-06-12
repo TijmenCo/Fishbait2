@@ -1,11 +1,30 @@
-﻿@{
-    ViewData["Title"] = "ErrorPost";
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home";
 }
-
+<div class="container">
+    <form asp-action="Filter" asp-controller="Post">
+        <div class="row col-xs-3 col-sm-3 col-md-3">
+            <label for="inputTag">Tag</label>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="form-group">
+                    <select asp-for="tags" asp-items="@Html.GetEnumSelectList<Tags>()" class="form-control"></select>
+                    <span asp-validation-for="tags" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<br />
 <div class="container">
     <div class="row justify-content-md-center postBox">
         <h5>No posts found!</h5>
-        </div>
+    </div>
 </div>
-}
-}

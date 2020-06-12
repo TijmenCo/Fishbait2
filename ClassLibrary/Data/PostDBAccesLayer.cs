@@ -32,9 +32,8 @@ namespace Fishbait2.Models
                 }
             }
             catch (Exception ex)
-            {
-                return ("Data save Failed");
-               // return (ex.Message.ToString());
+            { 
+                return (ex.Message.ToString());
             }
             finally
             {
@@ -85,8 +84,7 @@ namespace Fishbait2.Models
             }
             catch (Exception ex)
             {
-                return ("Data deletion Fail");
-                // return (ex.Message.ToString());
+                return (ex.Message.ToString());
             }
             finally
             {
