@@ -9,7 +9,7 @@ namespace DAL.Data
 {
     public class NotificationDBAccesLayer : INotificationDBAccesLayer
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
+        MySqlConnection con = new MySqlConnection(ConnectionString.GetConnection());
         public string AddFollow(INotificationDto notification)
         {
             try

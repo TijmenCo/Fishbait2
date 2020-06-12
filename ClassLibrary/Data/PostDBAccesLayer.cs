@@ -1,4 +1,5 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
+using DAL;
 using DAL.Models;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
@@ -14,7 +15,7 @@ namespace Fishbait2.Models
     public class PostDBAccesLayer : IPostDBAccesLayer
     {
 
-        MySqlConnection con = new MySqlConnection("Server = localhost; Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123");
+        MySqlConnection con = new MySqlConnection(ConnectionString.GetConnection());
         public string AddPost(IPostDto post)
         {
             try
