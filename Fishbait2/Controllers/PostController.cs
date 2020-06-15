@@ -148,7 +148,7 @@ namespace Fishbait2.Controllers
             catch (Exception ex)
             {
                 TempData["msg"] = ex.Message;
-               // return RedirectToAction
+                return View("DBError");
             }
             return RedirectToAction("Index", "Home");
         }
@@ -226,7 +226,6 @@ namespace Fishbait2.Controllers
                     iPostUpdate.description = update.description;
 
                     string resp = iPostUpdate.AddUpdatePost(iPostUpdate);
-
                 }
                 else
                 {
@@ -237,6 +236,7 @@ namespace Fishbait2.Controllers
             catch (Exception ex)
             {
                 TempData["msg"] = ex.Message;
+
             }
             return RedirectToAction("Index", "Home");
         }
