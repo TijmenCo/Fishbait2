@@ -18,8 +18,7 @@
         </div>
         <div class="form-row col-md-4">
             <label for="inputImage">Image</label>
-            <input asp-for="image" type="text" class="form-control" id="">
-            <span asp-validation-for="image" class="text-danger"></span>
+            <input asp-for="image" type="hidden" class="form-control">
             <input asp-for="files" type="file" name="files" multiple />
             <span asp-validation-for="files" class="text-danger"></span>
         </div>
