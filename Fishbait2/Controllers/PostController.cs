@@ -200,6 +200,7 @@ namespace Fishbait2.Controllers
         public IActionResult UpdatePost(int id, PostUpdateViewModel update)
         {
             update.postID = id;
+            update.validated = false;
             return View("UpdatePost", update);
         }
         public async Task<IActionResult> CreateUpdatePost(PostUpdateViewModel update)
@@ -229,6 +230,7 @@ namespace Fishbait2.Controllers
                 }
                 else
                 {
+                    update.validated = true;
                     return View("~/Views/Post/UpdatePost.cshtml", update);
                 }
             }

@@ -2,12 +2,15 @@
 
 <div class="container">
     <form asp-action="CreateUpdatePost" enctype="multipart/form-data">
+        @if (Model.validated == true)
+        {
         <div asp-validation-summary="All" class="text-danger"></div>
+        }
         <div class="form-row col-md-4">
             <input type="hidden" asp-for="postID" />
             <label for="inputTitle">Title</label>
             <input asp-for="title" type="text" class="form-control" id="" placeholder="Title">
-         
+
         </div>
         <div class="form-row col-md-8">
             <label for="inputDescription">Description</label>
