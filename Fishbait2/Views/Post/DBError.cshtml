@@ -3,5 +3,14 @@
     ViewData["Title"] = "Error Uploading";
 }
 
-<h1>@TempData["msg"]</h1>
-
+<div class="container">
+    <div class="row justify-content-md-center">
+        <h5>Sorry, there was an error while uploading</h5>
+    </div>
+    <div class="row justify-content-md-center">
+        <form asp-action="Index" asp-controller="Home">
+            <br />
+            <button type="submit" class="btn btn-primary">Go back to home</button>
+        </form>
+    </div>
+</div>

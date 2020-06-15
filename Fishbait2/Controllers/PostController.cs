@@ -221,11 +221,6 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    iPostUpdate.postID = update.postID;
-                    iPostUpdate.title = update.title;
-                    iPostUpdate.description = update.description;
-
-                    string resp = iPostUpdate.AddUpdatePost(iPostUpdate);
                 }
                 else
                 {
@@ -238,7 +233,19 @@ namespace Fishbait2.Controllers
                 TempData["msg"] = ex.Message;
 
             }
-            return RedirectToAction("Index", "Home");
+            iPostUpdate.postID = update.postID;
+            iPostUpdate.title = update.title;
+            iPostUpdate.description = update.description;
+
+            string resp = iPostUpdate.AddUpdatePost(iPostUpdate);
+            if(resp == "Data save successful")
+            {
+                return RedirectToAction("GoToPost", "Post", new {id=update.postID});
+            }
+            else
+            {
+                return View("DBError");
+            }
         }
     }
 }
