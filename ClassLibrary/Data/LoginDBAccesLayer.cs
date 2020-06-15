@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using DAL;
+using DAL.Models;
 using Fishbait2.Models;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,7 +11,7 @@ namespace Fishbait2.Data
 {
     public class LoginDBAccesLayer
     {
-        public string connectionString = "Server=localhost;Database=fishbait;Uid=Tijmen;Pwd=Suckmycred123";
+        public string connectionString = ConnectionString.GetConnection();
         public List<UserDto> GetUsers()
         {
             List<UserDto> users = new List<UserDto>();

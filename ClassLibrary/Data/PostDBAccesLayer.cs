@@ -14,7 +14,6 @@ namespace Fishbait2.Models
 {
     public class PostDBAccesLayer : IPostDBAccesLayer
     {
-
         MySqlConnection con = new MySqlConnection(ConnectionString.GetConnection());
         public string AddPost(IPostDto post)
         {

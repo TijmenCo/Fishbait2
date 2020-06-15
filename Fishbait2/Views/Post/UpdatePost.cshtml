@@ -1,24 +1,23 @@
 ﻿@model Fishbait2.Models.PostUpdateViewModel;
 
-
-
 <div class="container">
     <form asp-action="CreateUpdatePost" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-row col-md-4">
             <input type="hidden" asp-for="postID" />
             <label for="inputTitle">Title</label>
             <input asp-for="title" type="text" class="form-control" id="" placeholder="Title">
-            <span asp-validation-for="title" class="text-danger"></span>
+         
         </div>
         <div class="form-row col-md-8">
             <label for="inputDescription">Description</label>
             <textarea asp-for="description" type="text" class="form-control inputBox" rows="3" id="exampleFormControlTextarea1" placeholder="Description"></textarea>
-            <span asp-validation-for="description" class="text-danger"></span>
+
         </div>
         <div class="form-row col-md-4">
             <label for="inputImage">Image</label>
             <input asp-for="files" type="file" name="files" multiple />
-            <span asp-validation-for="files" class="text-danger"></span>
+
         </div>
         <br />
         <div class="form-row col-md-4">

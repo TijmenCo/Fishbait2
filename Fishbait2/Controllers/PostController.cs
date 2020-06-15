@@ -79,20 +79,6 @@ namespace Fishbait2.Controllers
             realpostmodel.tag = currentmodel.tag;
             realpostmodel.image = currentmodel.image;
 
-            /*
-            IPostUpdate currentupdatemodel = iPostUpdate.GetUpdateIDPosts(id);
-
-            realupdatemodel.id = currentupdatemodel.id;
-            realupdatemodel.postID = currentupdatemodel.postID;
-            realupdatemodel.title = currentupdatemodel.title;
-            realupdatemodel.description = currentupdatemodel.description;
-            realupdatemodel.image = currentupdatemodel.image;
-
-            List<PostUpdateViewModel> RealUpdateList = new List<PostUpdateViewModel>();
-            RealUpdateList.Add(realupdatemodel);
-            */
-
-
             realmodel.postupdate = iPostUpdate.GetUpdateIDPosts(id);
             realmodel.post = realpostmodel;
             return View("~/Views/Post/ViewPost.cshtml", realmodel);
@@ -142,7 +128,7 @@ namespace Fishbait2.Controllers
                         }
                     }
                     iPost.id = post.id;
-                  //  iPost.title = post.title;
+                    iPost.title = post.title;
                     iPost.description = post.description;
                     iPost.tag = post.tags.ToString();
                     if (post.files == null)
@@ -153,10 +139,16 @@ namespace Fishbait2.Controllers
                     string resp = iPost.EditPost(iPost);
 
                 }
+                else
+                {
+                    return View("~/Views/Post/EditPost.cshtml", post);
+                }
             }
+             
             catch (Exception ex)
             {
                 TempData["msg"] = ex.Message;
+               // return RedirectToAction
             }
             return RedirectToAction("Index", "Home");
         }
@@ -234,6 +226,10 @@ namespace Fishbait2.Controllers
 
                     string resp = iPostUpdate.AddUpdatePost(iPostUpdate);
 
+                }
+                else
+                {
+                    return View("~/Views/Post/UpdatePost.cshtml", update);
                 }
             }
             catch (Exception ex)
