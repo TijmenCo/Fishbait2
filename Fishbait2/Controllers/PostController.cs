@@ -127,16 +127,7 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    iPost.id = post.id;
-                    iPost.title = post.title;
-                    iPost.description = post.description;
-                    iPost.tag = post.tags.ToString();
-                    if (post.files == null)
-                    {
-                        iPost.image = post.image;
-                    }
-
-                    string resp = iPost.EditPost(iPost);
+                 
 
                 }
                 else
@@ -148,9 +139,26 @@ namespace Fishbait2.Controllers
             catch (Exception ex)
             {
                 TempData["msg"] = ex.Message;
+            }
+
+            iPost.id = post.id;
+            iPost.title = post.title;
+            iPost.description = post.description;
+            iPost.tag = post.tags.ToString();
+            if (post.files == null)
+            {
+                iPost.image = post.image;
+            }
+
+            string resp = iPost.EditPost(iPost);
+            if (resp == "Data save successful")
+            {
+                return RedirectToAction("GoToPost", "Post", new {id=post.id });
+            }
+            else
+            {
                 return View("DBError");
             }
-            return RedirectToAction("Index", "Home");
         }
 
 
@@ -179,13 +187,6 @@ namespace Fishbait2.Controllers
                             }
                         }
                     }
-                    iPost.id = post.id;
-                    iPost.title = post.title;
-                    iPost.description = post.description;
-                    iPost.tag = post.tags.ToString();
-
-                    string resp = iPost.AddPost(iPost);
-
                 }
                 else { 
                 return View("~/Views/Post/CreatePost.cshtml", post);
@@ -195,7 +196,21 @@ namespace Fishbait2.Controllers
             {
                 TempData["msg"] = ex.Message;
             }
-            return RedirectToAction("Index", "Home");
+            iPost.id = post.id;
+            iPost.title = post.title;
+            iPost.description = post.description;
+            iPost.tag = post.tags.ToString();
+
+            string resp = iPost.AddPost(iPost);
+
+            if (resp == "Data save successful")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("DBError");
+            }
         }
         public IActionResult UpdatePost(int id, PostUpdateViewModel update)
         {
