@@ -21,7 +21,7 @@ namespace FishbaitUnitTests
         {
         }
         [TestMethod]
-        public void GetUpdatePosts_GetAllNotificationsCorrectlyFromDB_Returns3()
+        public void GetUpdatePosts_GetAllNotificationsCorrectlyFromDB_ReturnsSuccesfully()
         {
             List<INotificationDto> postsDto = new List<INotificationDto>();
             List<INotificationDto> follows = GiveNotificationsDto();

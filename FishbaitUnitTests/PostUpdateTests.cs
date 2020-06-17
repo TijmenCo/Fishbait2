@@ -19,7 +19,7 @@ namespace FishbaitUnitTests
         {
         }
         [TestMethod]
-        public void GetUpdatePosts_UpdatePostsGetCorrectlySavedFromDB_Returns3()
+        public void GetUpdatePosts_UpdatePostsGetCorrectlySavedFromDB_ReturnsSuccesfully()
         {
             List<IPostUpdateDto> postsDto = new List<IPostUpdateDto>();
             List<IPostUpdateDto> posts = GiveUpdatePostsDto();
@@ -32,7 +32,7 @@ namespace FishbaitUnitTests
             Assert.AreEqual(gottenPosts.Count(), posts.Count());
         }
         [TestMethod]
-        public void GetUpdateIDPosts_UpdatePostsGetCorrectlyByPostIDFromDB_Returns7()
+        public void GetUpdateIDPosts_UpdatePostsGetCorrectlyByPostIDFromDB_ReturnsSuccesfully()
         {
             List<IPostUpdateDto> posts = GiveUpdatePostsDto();
             var mock = new Mock<IPostDBAccesLayer>();

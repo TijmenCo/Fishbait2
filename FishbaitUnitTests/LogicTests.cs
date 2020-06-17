@@ -13,7 +13,6 @@ namespace FishbaitUnitTests
     [TestClass]
     public class LogicTests
     {
-        private bool exists;
       
         [TestInitialize]
         public void TestInitialize()
@@ -21,7 +20,7 @@ namespace FishbaitUnitTests
         }
        
         [TestMethod]
-        public void GetPosts_PostsGetCorrectlySavedFromDB_Returns3()
+        public void GetPosts_PostsGetCorrectlySavedFromDB_ReturnsSuccesfully()
         {
 
             List<IPostDto> postsDto = new List<IPostDto>();
@@ -35,7 +34,7 @@ namespace FishbaitUnitTests
             Assert.AreEqual(gottenPosts.Count(), posts.Count());
         }
         [TestMethod]
-        public void GetPostID_PostGetCorrectlyWithID_Returns9()
+        public void GetPostID_PostGetCorrectlyWithID_ReturnsSuccesfully()
         {
             List<IPostDto> posts = GivePostsDto();
             var mock = new Mock<IPostDBAccesLayer>();
@@ -48,7 +47,7 @@ namespace FishbaitUnitTests
             Assert.AreEqual(result.id, resultID[0].id);
         }
         [TestMethod]
-        public void GetEditID_PostEditGetCorrectlyWithID_Returns8()
+        public void GetEditID_PostEditGetCorrectlyWithID_ReturnsSuccesfully()
         {
             List<IPostDto> posts = GivePostsDto();
             var mock = new Mock<IPostDBAccesLayer>();
@@ -61,7 +60,7 @@ namespace FishbaitUnitTests
             Assert.AreEqual(resultID.id, inputresultID[0].id);
         }
         [TestMethod]
-        public void Search_GetPostCorrectlyWithSearch_Returns8()
+        public void Search_GetPostCorrectlyWithSearch_ReturnsSuccesfully()
         {
             List<IPostDto> posts = GivePostsDto();
             var mock = new Mock<IPostDBAccesLayer>();
@@ -74,7 +73,7 @@ namespace FishbaitUnitTests
             Assert.AreEqual(resultID[0].id, inputresultID[0].id);
         }
         [TestMethod]
-        public void Filter_FilterPostsCorrectlyWithRightTag_Return1()
+        public void Filter_FilterPostsCorrectlyWithRightTag_ReturnSuccesfully()
         {
             List<IPostDto> posts = GivePostsDto();
             var mock = new Mock<IPostDBAccesLayer>();
