@@ -10,7 +10,7 @@ namespace DAL.Data
     public class NotificationDBAccesLayer : INotificationDBAccesLayer
     {
         MySqlConnection con = new MySqlConnection(ConnectionString.GetConnection());
-        public string AddFollow(INotificationDto notification)
+        public bool AddFollow(INotificationDto notification)
         {
             try
             {
@@ -21,12 +21,12 @@ namespace DAL.Data
                     cmd.Parameters.AddWithValue("@accountID", notification.accountID);
                     cmd.Parameters.AddWithValue("@postID", notification.postID);
                     cmd.ExecuteNonQuery();
-                    return ("Data save successful");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                return (ex.Message.ToString());
+                return false;
             }
             finally
             {

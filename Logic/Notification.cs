@@ -20,12 +20,12 @@ namespace Logic
         {
             notificationDB = _dependancy;
         }
-        public string AddFollow(INotification model)
+        public bool AddFollow(INotification model)
         {
             INotificationDto notificationDto = NotificationDBFactory.GetNotification();
             notificationDto.accountID = model.accountID;
             notificationDto.postID = model.postID;
-            string resp = notificationDB.AddFollow(notificationDto);
+            bool resp = notificationDB.AddFollow(notificationDto);
             return (resp);
         }
         public List<INotification> GetNotifications() 

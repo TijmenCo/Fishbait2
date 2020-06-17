@@ -24,7 +24,7 @@ namespace Fishbait2.Models
         {
             postDB = _dependencyDB;
         }
-        public string AddPost(IPost model) 
+        public bool AddPost(IPost model) 
         {
             IPostDto postDto = PostDBFactory.GetPost(); 
             postDto.id = model.id;
@@ -32,7 +32,7 @@ namespace Fishbait2.Models
             postDto.description = model.description;
             postDto.image = model.image;
             postDto.tag = model.tag;
-            string resp = postDB.AddPost(postDto);
+            bool resp = postDB.AddPost(postDto);
             return (resp);
         }
         public List<IPost> GetPosts() 
@@ -52,12 +52,12 @@ namespace Fishbait2.Models
             }
             return (posts);
         }
-        public string DeletePost(int id)
+        public bool DeletePost(int id)
         {
-            string resp = postDB.DeletePost(id);
+            bool resp = postDB.DeletePost(id);
             return (resp);
         }
-        public string EditPost(IPost model) 
+        public bool EditPost(IPost model) 
         {
             IPostDto realmodel = PostDBFactory.GetPost();
             realmodel.id = model.id;
@@ -65,7 +65,7 @@ namespace Fishbait2.Models
             realmodel.description = model.description;
             realmodel.image = model.image;
             realmodel.tag = model.tag;
-            string resp = postDB.EditPost(realmodel);
+            bool resp = postDB.EditPost(realmodel);
             return (resp);
         }
         public IPost GetPostID(int id)

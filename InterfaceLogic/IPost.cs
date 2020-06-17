@@ -10,9 +10,9 @@ namespace Fishbait2.Models
         string tag { get; set; }
         string title { get; set; }
 
-       string AddPost(IPost model);
-       string DeletePost(int id);
-       string EditPost(IPost model);
+        bool AddPost(IPost model);
+        bool DeletePost(int id);
+        bool EditPost(IPost model);
         List<IPost> Filter(string tag);
         IPost GetEditID(int id);
         IPost GetPostID(int id);

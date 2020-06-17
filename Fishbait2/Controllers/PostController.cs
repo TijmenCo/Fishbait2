@@ -86,8 +86,8 @@ namespace Fishbait2.Controllers
         public IActionResult DeletePost(int id, bool registered)
         {
             iNotification.DeleteNotification(id, registered);
-            string resp = iPost.DeletePost(id);
-            if (resp == "Data deletion succes")
+            bool resp = iPost.DeletePost(id);
+            if (resp == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -98,8 +98,8 @@ namespace Fishbait2.Controllers
         }
         public IActionResult DeleteUpdate(int id)
         {
-            string resp = iPostUpdate.DeleteUpdate(id);
-            if (resp == "Data deletion succes")
+            bool resp = iPostUpdate.DeleteUpdate(id);
+            if (resp == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -164,8 +164,8 @@ namespace Fishbait2.Controllers
                 iPost.image = post.image;
             }
 
-            string resp = iPost.EditPost(iPost);
-            if (resp == "Data save successful")
+            bool resp = iPost.EditPost(iPost);
+            if (resp == true)
             {
                 return RedirectToAction("GoToPost", "Post", new {id=post.id });
             }
@@ -215,9 +215,9 @@ namespace Fishbait2.Controllers
             iPost.description = post.description;
             iPost.tag = post.tags.ToString();
 
-            string resp = iPost.AddPost(iPost);
+            bool resp = iPost.AddPost(iPost);
 
-            if (resp == "Data save successful")
+            if (resp == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -266,8 +266,8 @@ namespace Fishbait2.Controllers
             iPostUpdate.title = update.title;
             iPostUpdate.description = update.description;
 
-            string resp = iPostUpdate.AddUpdatePost(iPostUpdate);
-            if(resp == "Data save successful")
+            bool resp = iPostUpdate.AddUpdatePost(iPostUpdate);
+            if(resp == true)
             {
                 return RedirectToAction("GoToPost", "Post", new {id=update.postID});
             }

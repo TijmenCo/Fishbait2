@@ -14,7 +14,7 @@ namespace Fishbait2.Models
     public class PostDBAccesLayer : IPostDBAccesLayer
     {
         MySqlConnection con = new MySqlConnection(ConnectionString.GetConnection());
-        public string AddPost(IPostDto post)
+        public bool AddPost(IPostDto post)
         {
             try
             {
@@ -27,12 +27,12 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@tag", post.tag);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    return ("Data save successful");
+                    return true;
                 }
             }
             catch (Exception ex)
             { 
-                return (ex.Message.ToString());
+                return false;
             }
             finally
             {
@@ -68,7 +68,7 @@ namespace Fishbait2.Models
 
             return posts;
         }
-        public string DeletePost(int id)
+        public bool DeletePost(int id)
         {
             try
             {
@@ -78,19 +78,19 @@ namespace Fishbait2.Models
                     query.Parameters.Add(param);
                     con.Open();
                     var reader = query.ExecuteReader();
-                    return ("Data deletion succes");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                return (ex.Message.ToString());
+                return false;
             }
             finally
             {
                 con.Close();
             }
         }
-        public string DeleteUpdate(int id)
+        public bool DeleteUpdate(int id)
         {
             try
             {
@@ -100,19 +100,19 @@ namespace Fishbait2.Models
                     query.Parameters.Add(param);
                     con.Open();
                     var reader = query.ExecuteReader();
-                    return ("Data deletion succes");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                return (ex.Message.ToString());
+                return false;
             }
             finally
             {
                 con.Close();
             }
         }
-        public string EditPost(IPostDto post)
+        public bool EditPost(IPostDto post)
         {
             try
             {
@@ -126,12 +126,12 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@tag", post.tag);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                    return ("Data save successful");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                return (ex.Message.ToString());
+                return false;
             }
             finally
             {
@@ -139,7 +139,7 @@ namespace Fishbait2.Models
             }
 
         }
-        public string AddUpdatePost(IPostUpdateDto post)
+        public bool AddUpdatePost(IPostUpdateDto post)
         {
             try
             {
@@ -152,12 +152,12 @@ namespace Fishbait2.Models
                     cmd.Parameters.AddWithValue("@description", post.description);
                     cmd.Parameters.AddWithValue("@image", post.image);
                     cmd.ExecuteNonQuery();
-                     return ("Data save successful");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                return (ex.Message.ToString());
+                return false;
             }
             finally
             {

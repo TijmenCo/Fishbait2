@@ -8,7 +8,7 @@ namespace Logic
         int id { get; set; }
         int postID { get; set; }
 
-        string AddFollow(INotification model);
+        bool AddFollow(INotification model);
         void DeleteNotification(int id, bool registered);
         List<INotification> GetNotifications();
         bool IsFollowed(int id);

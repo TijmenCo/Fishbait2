@@ -10,8 +10,8 @@ namespace Fishbait2.Models
         int postID { get; set; }
         string title { get; set; }
 
-        string AddUpdatePost(IPostUpdate model);
-        string DeleteUpdate(int id);
+        bool AddUpdatePost(IPostUpdate model);
+        bool DeleteUpdate(int id);
         List<IPostUpdate> GetUpdateIDPosts(int id);
         List<IPostUpdate> GetUpdatePosts();
     }

@@ -5,7 +5,7 @@ namespace DAL.Data
 {
     public interface INotificationDBAccesLayer
     {
-        string AddFollow(INotificationDto notification);
+        bool AddFollow(INotificationDto notification);
         void DeleteNotification(int id);
         List<INotificationDto> GetNotifications();
     }

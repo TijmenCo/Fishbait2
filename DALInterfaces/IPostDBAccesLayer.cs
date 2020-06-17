@@ -6,11 +6,11 @@ namespace Fishbait2.Models
 {
     public interface IPostDBAccesLayer
     {
-        string AddPost(IPostDto post);
-        string AddUpdatePost(IPostUpdateDto post);
-        string DeletePost(int id);
-        string DeleteUpdate(int id);
-        string EditPost(IPostDto post);
+        bool AddPost(IPostDto post);
+        bool AddUpdatePost(IPostUpdateDto post);
+        bool DeletePost(int id);
+        bool DeleteUpdate(int id);
+        bool EditPost(IPostDto post);
         List<IPostDto> GetPosts();
         List<IPostUpdateDto> GetUpdatePosts();
     }

@@ -21,8 +21,8 @@ namespace Fishbait2.Controllers
         {
             iNotification.accountID = accountid;
             iNotification.postID = postid;    
-            string resp = iNotification.AddFollow(iNotification);
-            if (resp == "Data save successful")
+            bool resp = iNotification.AddFollow(iNotification);
+            if (resp == true)
             {
                 return RedirectToAction("GoToPost", "Post", new { id = postid });
             }
