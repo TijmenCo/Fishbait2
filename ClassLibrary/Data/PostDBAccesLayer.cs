@@ -79,7 +79,7 @@ namespace Fishbait2.Models
                     query.Parameters.Add(param);
                     con.Open();
                     var reader = query.ExecuteReader();
-                    return ("Data deletion Succes");
+                    return ("Data deletion succes");
                 }
             }
             catch (Exception ex)
@@ -91,16 +91,27 @@ namespace Fishbait2.Models
                 con.Close();
             }
         }
-        public void DeleteUpdate(int id)
+        public string DeleteUpdate(int id)
         {
-            using (MySqlCommand query = new MySqlCommand("DELETE FROM updatepost WHERE id=@id", con))
+            try
             {
-                MySqlParameter param = new MySqlParameter("@id", id);
-                query.Parameters.Add(param);
-                con.Open();
-                var reader = query.ExecuteReader();
+                using (MySqlCommand query = new MySqlCommand("DELETE FROM updatepost WHERE id=@id", con))
+                {
+                    MySqlParameter param = new MySqlParameter("@id", id);
+                    query.Parameters.Add(param);
+                    con.Open();
+                    var reader = query.ExecuteReader();
+                    return ("Data deletion succes");
+                }
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                return (ex.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
         }
         public string EditPost(IPostDto post)
         {

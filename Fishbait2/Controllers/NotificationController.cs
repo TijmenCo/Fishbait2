@@ -32,13 +32,14 @@ namespace Fishbait2.Controllers
             }
 
         }
-        /* WIP
+
         public IActionResult GetNotifications() 
         {
             List<INotification> follows = new List<INotification>();
             follows = iNotification.GetNotifications().Where(s => s.accountID == 1).ToList();
             return View();
         }
+        /*
         public IActionResult SendNotification(int id) 
         {
             NotificationViewModel realmodel = new NotificationViewModel();
@@ -54,5 +55,6 @@ namespace Fishbait2.Controllers
             return View();
         }
         */
+ 
     }
 }

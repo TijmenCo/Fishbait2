@@ -37,13 +37,13 @@ namespace Fishbait2.Models
             string resp = postDB.AddPost(postDto);
             return (resp);
         }
-        public List<IPost> GetPosts() //DONE
+        public List<IPost> GetPosts() 
         {
             posts = new List<IPost>();
-            List<IPostDto> AllPosts = postDB.GetPosts(); //Returnt alle posts van de database
+            List<IPostDto> AllPosts = postDB.GetPosts(); 
             foreach (IPostDto model in AllPosts)
             {
-                posts.Add(new Post(postDB) //Zet alle IPostDtos om in IPost
+                posts.Add(new Post(postDB)
                 {
                     id = model.id,
                     title = model.title,

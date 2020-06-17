@@ -21,9 +21,9 @@ namespace Fishbait2.Models
         public string image { get; set; }
         public PostUpdate(IPostDBAccesLayer _dependancy)
         {
-            postDB = _dependancy; //Zorgt ervoor dat er een factory wordt aangemaakt waardoor er een model wordt aangemaakt die methodes kan aangeven.
+            postDB = _dependancy; 
         }
-        public string AddUpdatePost(IPostUpdate model) //DONE
+        public string AddUpdatePost(IPostUpdate model) 
         {
             IPostUpdateDto postUpdateDto = PostDBFactory.GetPostUpdate(); 
             postUpdateDto.id = model.id;
@@ -34,7 +34,7 @@ namespace Fishbait2.Models
             string resp = postDB.AddUpdatePost(postUpdateDto);
             return (resp);
         }
-        public List<IPostUpdate> GetUpdatePosts() //DONE
+        public List<IPostUpdate> GetUpdatePosts()
         {
             List<IPostUpdateDto> AllPostUpdates = new List<IPostUpdateDto>();
             List<IPostUpdate> RealAllPostUpdates = new List<IPostUpdate>();
@@ -51,9 +51,10 @@ namespace Fishbait2.Models
             }
             return (RealAllPostUpdates);
         }
-        public void DeleteUpdate(int id) //DONE
+        public string DeleteUpdate(int id) 
         {
-            postDB.DeleteUpdate(id);
+            string resp = postDB.DeleteUpdate(id);
+            return (resp);
         }
  
         public List<IPostUpdate> GetUpdateIDPosts(int id)

@@ -9,7 +9,7 @@ namespace Fishbait2.Models
         string AddPost(IPostDto post);
         string AddUpdatePost(IPostUpdateDto post);
         string DeletePost(int id);
-        void DeleteUpdate(int id);
+        string DeleteUpdate(int id);
         string EditPost(IPostDto post);
         List<IPostDto> GetPosts();
         List<IPostUpdateDto> GetUpdatePosts();

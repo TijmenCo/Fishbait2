@@ -86,13 +86,27 @@ namespace Fishbait2.Controllers
         public IActionResult DeletePost(int id, bool registered)
         {
             iNotification.DeleteNotification(id, registered);
-            iPost.DeletePost(id);
-            return RedirectToAction("Index", "Home");
+            string resp = iPost.DeletePost(id);
+            if (resp == "Data deletion succes")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("DBError");
+            }
         }
         public IActionResult DeleteUpdate(int id)
         {
-            iPostUpdate.DeleteUpdate(id);
-            return RedirectToAction("Index", "Home");
+            string resp = iPostUpdate.DeleteUpdate(id);
+            if (resp == "Data deletion succes")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("DBError");
+            }
         }
         public IActionResult EditPost(int id)
         {
