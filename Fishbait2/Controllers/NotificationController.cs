@@ -20,24 +20,26 @@ namespace Fishbait2.Controllers
         public IActionResult Follow(int postid, int accountid)
         {
             iNotification.accountID = accountid;
-            iNotification.postID = postid;
-            try
+            iNotification.postID = postid;    
+            string resp = iNotification.AddFollow(iNotification);
+            if (resp == "Data save successful")
             {
-                iNotification.AddFollow(iNotification);
+                return RedirectToAction("GoToPost", "Post", new { id = postid });
             }
-            catch (Exception ex)
+            else
             {
-                TempData["msg"] = ex.Message;
+                return View("DBError");
             }
-            return RedirectToAction("Index", "Home");
+
         }
-        public IActionResult GetNotifications() //WIP
+        /* WIP
+        public IActionResult GetNotifications() 
         {
             List<INotification> follows = new List<INotification>();
             follows = iNotification.GetNotifications().Where(s => s.accountID == 1).ToList();
             return View();
         }
-        public IActionResult SendNotification(int id) //WIP
+        public IActionResult SendNotification(int id) 
         {
             NotificationViewModel realmodel = new NotificationViewModel();
             List<INotification> follows = new List<INotification>();
@@ -51,5 +53,6 @@ namespace Fishbait2.Controllers
             }
             return View();
         }
+        */
     }
 }

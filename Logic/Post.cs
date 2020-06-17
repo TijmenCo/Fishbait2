@@ -14,7 +14,7 @@ namespace Fishbait2.Models
     {
         private readonly IPostDBAccesLayer postDB;
         private List<IPost> posts { get; set; }
-        //  PostDBAccesLayer postDB = new PostDBAccesLayer();
+   
 
         public int id { get; set; }
         public string title { get; set; }
@@ -26,9 +26,9 @@ namespace Fishbait2.Models
         {
             postDB = _dependencyDB;
         }
-        public string AddPost(IPost model) //DONE
+        public string AddPost(IPost model) 
         {
-            IPostDto postDto = PostDBFactory.GetPost(); //Maakt een nieuw model aan.
+            IPostDto postDto = PostDBFactory.GetPost(); 
             postDto.id = model.id;
             postDto.title = model.title;
             postDto.description = model.description;
@@ -54,12 +54,12 @@ namespace Fishbait2.Models
             }
             return (posts);
         }
-        public string DeletePost(int id) //DONE
+        public string DeletePost(int id)
         {
             string resp = postDB.DeletePost(id);
             return (resp);
         }
-        public string EditPost(IPost model) //DONE
+        public string EditPost(IPost model) 
         {
             IPostDto realmodel = PostDBFactory.GetPost();
             realmodel.id = model.id;
