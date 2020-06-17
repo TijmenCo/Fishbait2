@@ -14,8 +14,6 @@ namespace Fishbait2.Models
     {
         private readonly IPostDBAccesLayer postDB;
         private List<IPost> posts { get; set; }
-   
-
         public int id { get; set; }
         public string title { get; set; }
         public string description { get; set; }

@@ -13,38 +13,13 @@ namespace FishbaitUnitTests
     [TestClass]
     public class LogicTests
     {
-        public bool exists;
+        private bool exists;
       
         [TestInitialize]
         public void TestInitialize()
         {
         }
-        /*
-        [TestMethod]
-        public void AddPost_AddAPost_ReturnsDataSaveSuccessfully()
-        {
-            
-            var dalMock = new Mock<IPostDBAccesLayer>();
-            var postMock = new Mock<IPostDBAccesLayer>();
-            dalMock.Setup(m => m.AddPost(It.IsAny<IPostDto>())).Returns("Data save succesfull");
-            //Configure Mocks
-            mock.Setup(m => m.title).Returns("Lepel");
-            mock.Setup(m => m.description).Returns("Nieuwe soort lepel");
-            mock.Setup(m => m.image).Returns("lepel.png");
-            mock.Setup(m => m.tag).Returns("Tech");
-            //Save Result
-            var result = mock.Object.AddPost(mock.Object);
-            //Check if add went succesfully
-            Assert.AreEqual(result, "Data save Successfully");
-
-            // Demonstrate that the configuration works
-            //   Assert.AreEqual("lepel", mock.Object.title);
-
-            // Verify that the mock was invoked
-            //    mock.VerifyGet(x => x.title);
-          
-        }
-    */
+       
         [TestMethod]
         public void GetPosts_PostsGetCorrectlySavedFromDB_Returns3()
         {
@@ -114,6 +89,7 @@ namespace FishbaitUnitTests
 
         public List<IPostDto> GivePostsDto()
         {
+            //Seed list with posts
             IPostDto[] postDto = new IPostDto[3];
             List<IPostDto> posts = new List<IPostDto>();
             for (int i = 0; i < 3; i++)

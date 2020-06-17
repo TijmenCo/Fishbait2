@@ -11,10 +11,9 @@ namespace Fishbait2.Controllers
     public class HomeController : Controller
     {
         private readonly IPost refPost;
-       // private Post refPost;
-        public HomeController(IPost post)
+        public HomeController(IPost dependency)
         {
-            refPost = post;
+            refPost = dependency;
         }
         public IActionResult Index()
         {

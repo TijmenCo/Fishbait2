@@ -11,7 +11,6 @@ namespace Fishbait2.Models
     public class PostUpdate : IPostUpdate
     {
         private readonly IPostDBAccesLayer postDB;
-        [Key]
         public int id { get; set; }
         public int postID { get; set; }
         public string title { get; set; }

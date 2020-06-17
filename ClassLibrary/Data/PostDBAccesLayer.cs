@@ -1,5 +1,4 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-using DAL;
+﻿using DAL;
 using DAL.Models;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;

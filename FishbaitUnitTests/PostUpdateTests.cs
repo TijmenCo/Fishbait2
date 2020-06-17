@@ -44,8 +44,9 @@ namespace FishbaitUnitTests
             //Check if the same PostUpdates get found
             Assert.AreEqual(result[0].id, resultID[0].id);
         }
-            public List<IPostUpdateDto> GiveUpdatePostsDto()
+        public List<IPostUpdateDto> GiveUpdatePostsDto()
         {
+            //Seed list with postupdates
             IPostUpdateDto[] postDto = new IPostUpdateDto[3];
             List<IPostUpdateDto> postupdates = new List<IPostUpdateDto>();
             for (int i = 0; i < 3; i++)
