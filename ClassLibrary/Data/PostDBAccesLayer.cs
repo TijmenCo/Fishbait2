@@ -117,7 +117,7 @@ namespace Fishbait2.Models
             try
             {
                 con.Open();
-                string sql = "UPDATE post SET title = @title, tag = @tag, image = @image Where id = @id";
+                string sql = "UPDATE post SET title = @title, tag = @tag, description = @description, image = @image Where id = @id";
                 using (MySqlCommand cmd = new MySqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@id", post.id);
